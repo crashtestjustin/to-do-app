@@ -1,0 +1,1 @@
+document.getElementById("content").appendChild(function(){const t=document.createElement("div");return t.classList="application-body",t}());
