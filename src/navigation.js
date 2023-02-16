@@ -1,4 +1,6 @@
-import { createDiv } from "./header.js";
+import { createDiv } from "./Domfunctionality.js";
+import { createFolder } from "./Domfunctionality.js";
+import { createButton } from "./Domfunctionality.js";
 
 export function createNav() {
   const nav = createDiv("navigation");
@@ -48,25 +50,12 @@ function pomodoroTimerBtn() {
 
 function modifyNavBar() {
   const section = createDiv("nav-modify");
-
   const addFolder = createButton("add-folder", "ADD FOLDER");
 
-  //add event listener and functionality to add folders to the nav bar
   addFolder.addEventListener("click", (e) => {
-    console.log("testing");
-    const newFolder = createButton("new-folder sub-cat", "TEST NEW");
-    const selector = document.querySelector(".to-do-buttons");
-    selector.appendChild(newFolder);
+    createFolder();
   });
 
   section.appendChild(addFolder);
   return section;
-}
-
-function createButton(className, textContent) {
-  const button = document.createElement("button");
-  button.classList = className;
-  button.textContent = textContent;
-
-  return button;
 }

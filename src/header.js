@@ -1,3 +1,5 @@
+import { createDiv } from "./Domfunctionality.js";
+
 export function createHeader() {
   const header = createDiv("header");
 
@@ -7,11 +9,4 @@ export function createHeader() {
   header.appendChild(headerTitle);
 
   return header;
-}
-
-export function createDiv(divClass) {
-  const div = document.createElement("div");
-  div.classList = divClass;
-
-  return div;
 }
