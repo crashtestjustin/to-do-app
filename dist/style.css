@@ -18,10 +18,65 @@ body {
   background-color: lightgray;
 }
 
+button {
+  width: 220px;
+  height: 40px;
+  border-radius: 24px;
+  border: none;
+}
+
+.sub-cat {
+  width: 200px;
+  justify-self: center;
+}
+
 .navigation {
   background-color: lightblue;
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
+  row-gap: 40px;
+  justify-items: center;
+  padding-top: 20px;
+}
+
+.to-do-buttons {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  row-gap: 10px;
+  grid-auto-rows: 1fr;
 }
 
 .main-content {
   background-color: lightseagreen;
+  display: grid;
+  grid-template-rows: 1fr max-content;
+}
+
+.main-content button {
+  justify-self: end;
+  width: 125px;
+  height: 125px;
+  border-radius: 75px;
+  margin: 15px;
+  font-size: 2rem;
+}
+
+.to-do-item {
+  display: grid;
+  grid-template-columns: auto repeat(3, max-content);
+  grid-column-gap: 20px;
+  align-items: center;
+  background-color: lightcoral;
+  padding: 30px;
+  margin: 15px;
+}
+
+.to-do-item button {
+  width: 50px;
+  height: 50px;
+}
+
+.to-do-item input[type="checkbox"] {
+  width: 25px;
+  height: 25px;
 }
