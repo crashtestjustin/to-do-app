@@ -2,9 +2,26 @@
 }
 
 body {
-  height: 100vh;
-  background-color: lightblue;
+  margin: 0;
 }
 
 .application-body {
+  height: 100vh;
+  /* background-color: lightblue; */
+  display: grid;
+  grid-template: 100px 1fr / minmax(250px, 255px) 3fr;
+}
+
+.header {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  background-color: lightgray;
+}
+
+.navigation {
+  background-color: lightblue;
+}
+
+.main-content {
+  background-color: lightseagreen;
 }

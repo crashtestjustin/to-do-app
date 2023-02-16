@@ -4,8 +4,8 @@ export const toDo = (title, dueDate, dueTime, description) => {
     dueDate: dueDate,
     dueTime: dueTime,
     description: description,
+    complete: false,
   };
 };
 
 //add in date/time functionality
-//default complete = false
