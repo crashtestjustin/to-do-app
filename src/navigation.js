@@ -19,10 +19,10 @@ function toDoButtons() {
   const section = document.createElement("div");
   section.classList = "to-do-buttons";
 
-  const allToDos = createButton("all-to-dos main-cat", "ALL TO DO'S");
+  const allToDos = createButton("all-items main-cat", "ALL TO DO'S");
   section.appendChild(allToDos);
 
-  const today = createButton("all-to-dos sub-cat", "TODAY");
+  const today = createButton("today sub-cat", "TODAY");
   section.appendChild(today);
 
   const thisWeek = createButton("this-week sub-cat", "THIS WEEK");
@@ -50,10 +50,16 @@ function modifyNavBar() {
   const section = createDiv("nav-modify");
 
   const addFolder = createButton("add-folder", "ADD FOLDER");
-  section.appendChild(addFolder);
 
   //add event listener and functionality to add folders to the nav bar
+  addFolder.addEventListener("click", (e) => {
+    console.log("testing");
+    const newFolder = createButton("new-folder sub-cat", "TEST NEW");
+    const selector = document.querySelector(".to-do-buttons");
+    selector.appendChild(newFolder);
+  });
 
+  section.appendChild(addFolder);
   return section;
 }
 
