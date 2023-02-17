@@ -15,9 +15,10 @@ export function createFolder() {
   return newFolder;
 }
 
-export function createButton(className, textContent) {
+export function createButton(className, textContent, btnId) {
   const button = document.createElement("button");
   button.classList = className;
+  button.id = btnId;
   button.textContent = textContent;
 
   return button;
