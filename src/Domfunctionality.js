@@ -83,8 +83,10 @@ export function appendToDo() {
   return section;
 }
 
-export function submitFolderModal() {
+export function submitFolderModal(e) {
   console.log("submitTest");
+  createFolder();
+  closeModal(e);
 }
 //modal functions
 export function displayModal(e) {

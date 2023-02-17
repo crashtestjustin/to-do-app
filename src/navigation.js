@@ -93,7 +93,7 @@ function folderForm() {
   const folderSubmit = createButton("new-folder-button", "SUBMIT");
   folderSubmit.type = "submit";
   folderSubmit.addEventListener("click", (e) => {
-    submitFolderModal();
+    submitFolderModal(e);
   });
 
   formParent.appendChild(closeFormModal);
