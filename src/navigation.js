@@ -14,6 +14,9 @@ export function createNav() {
   const addFolder = modifyNavBar();
   nav.appendChild(addFolder);
 
+  const addFolderModal = folderModal();
+  nav.appendChild(addFolderModal);
+
   return nav;
 }
 
@@ -58,4 +61,34 @@ function modifyNavBar() {
 
   section.appendChild(addFolder);
   return section;
+}
+
+function folderModal() {
+  const section = createDiv("folder-create");
+  section.appendChild(folderForm());
+
+  return section;
+}
+//<form action="/" method="GET" id="form" novalidate>
+function folderForm() {
+  const formParent = document.createElement("form");
+  formParent.action = "/";
+  formParent.method = "GET";
+  formParent.id = "folder-form";
+
+  const folderLabel = document.createElement("label");
+  folderLabel.htmlFor = "name-input";
+  folderLabel.textContent = "Provide a name for the new folder:";
+
+  const folderName = document.createElement("input");
+  folderName.type = "text";
+  folderName.id = "name-input";
+
+  const folderSubmit = createButton("new-folder-button", "SUBMIT");
+  folderSubmit.type = "submit";
+
+  formParent.appendChild(folderLabel);
+  formParent.appendChild(folderName);
+  formParent.appendChild(folderSubmit);
+  return formParent;
 }
