@@ -69,6 +69,7 @@ function modifyNavBar() {
 
 function folderModal() {
   const section = createDiv("folder-create");
+
   section.appendChild(folderForm());
 
   return section;

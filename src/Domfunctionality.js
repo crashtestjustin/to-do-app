@@ -96,6 +96,9 @@ export function displayModal(e) {
     // modalSelected = document.querySelector(".to-do-modal");
   }
   modalSelected.classList.remove("hidden-modal");
+  const overlay = document
+    .querySelector(".modal-bg")
+    .classList.remove("hidden-modal");
 
   return modalSelected;
 }
@@ -103,6 +106,10 @@ export function displayModal(e) {
 export function closeModal(e) {
   const modalSelected = e.target.closest(".modal");
   modalSelected.classList.add("hidden-modal");
+
+  const overlay = document
+    .querySelector(".modal-bg")
+    .classList.add("hidden-modal");
 
   return modalSelected;
 }
