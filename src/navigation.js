@@ -1,6 +1,9 @@
 import { createDiv } from "./Domfunctionality.js";
 import { createFolder } from "./Domfunctionality.js";
 import { createButton } from "./Domfunctionality.js";
+import { submitFolderModal } from "./Domfunctionality.js";
+import { closeModal } from "./Domfunctionality.js";
+import { displayModal } from "./Domfunctionality.js";
 
 export function createNav() {
   const nav = createDiv("navigation");
@@ -56,7 +59,8 @@ function modifyNavBar() {
   const addFolder = createButton("add-folder", "ADD FOLDER");
 
   addFolder.addEventListener("click", (e) => {
-    createFolder();
+    displayModal(e);
+    // createFolder();
   });
 
   section.appendChild(addFolder);
@@ -69,12 +73,13 @@ function folderModal() {
 
   return section;
 }
-//<form action="/" method="GET" id="form" novalidate>
 function folderForm() {
-  const formParent = document.createElement("form");
-  formParent.action = "/";
-  formParent.method = "GET";
-  formParent.id = "folder-form";
+  const formParent = createDiv("new-folder-modal modal hidden-modal");
+
+  const closeFormModal = createButton("close-modal", "X");
+  closeFormModal.addEventListener("click", (e) => {
+    closeModal(e);
+  });
 
   const folderLabel = document.createElement("label");
   folderLabel.htmlFor = "name-input";
@@ -86,7 +91,11 @@ function folderForm() {
 
   const folderSubmit = createButton("new-folder-button", "SUBMIT");
   folderSubmit.type = "submit";
+  folderSubmit.addEventListener("click", (e) => {
+    submitFolderModal();
+  });
 
+  formParent.appendChild(closeFormModal);
   formParent.appendChild(folderLabel);
   formParent.appendChild(folderName);
   formParent.appendChild(folderSubmit);

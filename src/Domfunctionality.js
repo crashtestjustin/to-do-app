@@ -30,7 +30,7 @@ export function createCheckbox() {
 
   return checkbox;
 }
-
+//to do elemnts
 let item = 0;
 export function createToDo() {
   const section = createDiv("to-do-item");
@@ -57,7 +57,7 @@ export function createToDo() {
 
   return section;
 }
-
+//removing to do item
 function removeToDo(e) {
   console.log("test");
   const toDoList = document.querySelector(".to-do-list");
@@ -65,7 +65,7 @@ function removeToDo(e) {
   toDoList.removeChild(removeItem);
   reIndexToDos();
 }
-
+//reindexing the data attribute of the to dos
 function reIndexToDos() {
   const toDos = document.querySelectorAll(".to-do-item");
   item = 0;
@@ -74,11 +74,35 @@ function reIndexToDos() {
     item = item += 1;
   });
 }
-
+//appending final to Do
 export function appendToDo() {
   const section = document.querySelector(".to-do-list");
   const newToDo = createToDo();
   section.appendChild(newToDo);
 
   return section;
+}
+
+export function submitFolderModal() {
+  console.log("submitTest");
+}
+//modal functions
+export function displayModal(e) {
+  var modalSelected;
+  if ((e.target.className = "nav-modify")) {
+    modalSelected = document.querySelector(".new-folder-modal");
+  }
+  {
+    // modalSelected = document.querySelector(".to-do-modal");
+  }
+  modalSelected.classList.remove("hidden-modal");
+
+  return modalSelected;
+}
+
+export function closeModal(e) {
+  const modalSelected = e.target.closest(".modal");
+  modalSelected.classList.add("hidden-modal");
+
+  return modalSelected;
 }
