@@ -46,6 +46,69 @@ button {
   grid-auto-rows: 1fr;
 }
 
+.folder-create {
+  position: relative;
+}
+
+.hidden-modal {
+  visibility: hidden;
+}
+
+.new-folder-modal {
+  position: absolute;
+  left: 500px;
+  top: 20px;
+  width: 400px;
+  height: 200px;
+  display: grid;
+  grid-template-rows: min-content;
+  background-color: lightgray;
+  padding: 10px 10px 20px 10px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.close-modal {
+  font-size: 1.8rem;
+  width: min-content;
+  height: min-content;
+  background: none;
+  justify-self: end;
+  border: none;
+  color: #7d7c7c;
+}
+
+.new-folder-modal label {
+  justify-self: center;
+  align-self: end;
+}
+
+.new-folder-modal input[type="text"] {
+  justify-self: center;
+  border: none;
+  width: 75%;
+  height: min-content;
+  margin: 20px 0;
+  padding: 2px 5px;
+  font-size: 1.2rem;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
+
+.new-folder-modal button {
+  width: min-content;
+  border-radius: 8px;
+}
+
+.new-folder-button {
+  justify-self: center;
+  padding: 5px 30px;
+  border: 1px solid #000000;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
 .main-content {
   background-color: lightseagreen;
   display: grid;
