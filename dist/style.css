@@ -23,6 +23,7 @@ button {
   height: 40px;
   border-radius: 24px;
   border: none;
+  font-size: 1rem;
 }
 
 .sub-cat {
@@ -65,7 +66,7 @@ button {
   position: absolute;
   left: 500px;
   top: 20px;
-  width: 400px;
+  width: 450px;
   height: 200px;
   display: grid;
   grid-template-rows: min-content;
@@ -107,6 +108,17 @@ button {
 .new-folder-modal button {
   width: min-content;
   border-radius: 8px;
+}
+
+.display-warning {
+  justify-self: center;
+  margin-top: 10px;
+}
+
+.display-warning::after {
+  content: "*Please enter a name for the folder";
+  color: red;
+  font-size: 1rem;
 }
 
 .new-folder-button {
