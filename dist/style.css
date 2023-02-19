@@ -46,10 +46,6 @@ button {
   grid-auto-rows: 1fr;
 }
 
-.folder-create {
-  position: relative;
-}
-
 .hidden-modal {
   visibility: hidden;
 }
@@ -61,10 +57,16 @@ button {
   background-color: #00000043;
 }
 
-.new-folder-modal {
+.modal {
   position: absolute;
-  left: 500px;
-  top: 20px;
+}
+
+/* modals */
+
+.new-folder-modal,
+.new-todo-modal {
+  left: 40%;
+  top: 40%;
   width: 450px;
   height: 200px;
   display: grid;
@@ -141,6 +143,15 @@ button {
   background-color: lightseagreen;
   display: grid;
   grid-template-rows: 1fr max-content;
+}
+
+.to-do-modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  height: 150px;
+  background-color: lightgray;
 }
 
 .main-content button {
