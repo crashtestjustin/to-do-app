@@ -113,14 +113,18 @@ export function submitFolderModal(e) {
   // closeModal(e);
 }
 //modal functions
-export function displayModal(e) {
-  var modalSelected;
-  if ((e.target.className = "nav-modify")) {
-    modalSelected = document.querySelector(".new-folder-modal");
-  }
-  {
-    // modalSelected = document.querySelector(".to-do-modal");
-  }
+export function displayModal() {
+  const modalSelected = document.querySelector(".new-folder-modal");
+  modalSelected.classList.remove("hidden-modal");
+  const overlay = document
+    .querySelector(".modal-bg")
+    .classList.remove("hidden-modal");
+
+  return modalSelected;
+}
+
+export function displayToDoModal() {
+  const modalSelected = document.querySelector(".new-todo-modal");
   modalSelected.classList.remove("hidden-modal");
   const overlay = document
     .querySelector(".modal-bg")
