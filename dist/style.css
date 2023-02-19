@@ -9,7 +9,7 @@ body {
   height: 100vh;
   /* background-color: lightblue; */
   display: grid;
-  grid-template: 100px 1fr / minmax(250px, 255px) 3fr;
+  grid-template: 100px 1fr / minmax(300px, 305px) 3fr;
 }
 
 .header {
@@ -28,7 +28,6 @@ button {
 
 .sub-cat {
   width: 200px;
-  justify-self: center;
 }
 
 .navigation {
@@ -126,6 +125,16 @@ button {
   padding: 5px 30px;
   border: 1px solid #000000;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.remove {
+  width: min-content;
+  background: none;
 }
 
 .main-content {
