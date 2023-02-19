@@ -1,5 +1,4 @@
 import { createDiv } from "./Domfunctionality.js";
-import { createFolder } from "./Domfunctionality.js";
 import { createButton } from "./Domfunctionality.js";
 import { submitFolderModal } from "./Domfunctionality.js";
 import { closeModal } from "./Domfunctionality.js";
@@ -28,20 +27,20 @@ function toDoButtons() {
   section.classList = "to-do-buttons";
 
   const allToDos = createButton("all-items main-cat", "ALL TO DO'S");
-  section.appendChild(allToDos);
 
   const today = createButton("today sub-cat", "TODAY");
-  section.appendChild(today);
 
   const thisWeek = createButton("this-week sub-cat", "THIS WEEK");
-  section.appendChild(thisWeek);
 
   const nextWeek = createButton("next-week sub-cat", "NEXT WEEK");
-  section.appendChild(nextWeek);
 
   const folders = createButton("folders main-cat", "FOLDERS");
-  section.appendChild(folders);
 
+  section.appendChild(allToDos);
+  section.appendChild(today);
+  section.appendChild(thisWeek);
+  section.appendChild(nextWeek);
+  section.appendChild(folders);
   return section;
 }
 

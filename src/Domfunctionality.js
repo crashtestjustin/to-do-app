@@ -15,17 +15,35 @@ export function createFolder(e) {
     return;
   } else {
     const newFolder = createButton("new-folder sub-cat", folderName.value);
+    const removeCustom = createButton("remove", "x");
+    const customDiv = document.createElement("div");
+    customDiv.classList = "custom-div";
+
+    removeCustom.addEventListener("click", (e) => {
+      removeFolder(e);
+    });
+
+    customDiv.appendChild(newFolder);
+    customDiv.appendChild(removeCustom);
     const selector = document.querySelector(".to-do-buttons");
-    selector.appendChild(newFolder);
+    selector.appendChild(customDiv);
     closeModal(e);
+    warning.classList = "warning";
+    folderName.value = "";
     return newFolder;
   }
+}
+
+function removeFolder(e) {
+  const parent = e.target.closest(".to-do-buttons");
+  const folder = document.querySelector(".custom-div");
+  parent.removeChild(folder);
 }
 
 export function createButton(className, textContent, btnId) {
   const button = document.createElement("button");
   button.classList = className;
-  button.id = btnId;
+  button.id = "undefined" ? (button.id = "") : (button.id = btnId);
   button.textContent = textContent;
 
   return button;
