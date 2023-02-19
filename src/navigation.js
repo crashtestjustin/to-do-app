@@ -16,9 +16,6 @@ export function createNav() {
   const addFolder = modifyNavBar();
   nav.appendChild(addFolder);
 
-  const addFolderModal = folderModal();
-  nav.appendChild(addFolderModal);
-
   return nav;
 }
 
@@ -59,22 +56,13 @@ function modifyNavBar() {
 
   addFolder.addEventListener("click", (e) => {
     displayModal(e);
-    // createFolder();
   });
 
   section.appendChild(addFolder);
   return section;
 }
 
-function folderModal() {
-  const section = createDiv("folder-create");
-
-  section.appendChild(folderForm());
-
-  return section;
-}
-
-function folderForm() {
+export function folderForm() {
   const formParent = createDiv("new-folder-modal modal hidden-modal");
 
   const closeFormModal = createButton("close-modal", "X");

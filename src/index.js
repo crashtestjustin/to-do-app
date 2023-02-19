@@ -2,6 +2,8 @@ import { createHeader } from "./header.js";
 import { createNav } from "./navigation.js";
 import { createMain } from "./mainContent.js";
 import { createDiv } from "./Domfunctionality.js";
+import { folderForm } from "./navigation.js";
+import { toDoForm } from "./mainContent.js";
 const main = document.getElementById("content");
 
 function application() {
@@ -13,6 +15,12 @@ function application() {
 
   const modalBg = createDiv("modal-bg hidden-modal");
   app.appendChild(modalBg);
+
+  const newFolderModal = folderForm();
+  app.appendChild(newFolderModal);
+
+  const newToDoForm = toDoForm();
+  app.appendChild(newToDoForm);
 
   const navBar = createNav();
   app.appendChild(navBar);
