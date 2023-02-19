@@ -74,6 +74,7 @@ function folderModal() {
 
   return section;
 }
+
 function folderForm() {
   const formParent = createDiv("new-folder-modal modal hidden-modal");
 
@@ -85,6 +86,9 @@ function folderForm() {
   const folderLabel = document.createElement("label");
   folderLabel.htmlFor = "name-input";
   folderLabel.textContent = "Provide a name for the new folder:";
+
+  const warning = document.createElement("div");
+  warning.classList = "warning";
 
   const folderName = document.createElement("input");
   folderName.type = "text";
@@ -98,6 +102,7 @@ function folderForm() {
 
   formParent.appendChild(closeFormModal);
   formParent.appendChild(folderLabel);
+  formParent.appendChild(warning);
   formParent.appendChild(folderName);
   formParent.appendChild(folderSubmit);
   return formParent;

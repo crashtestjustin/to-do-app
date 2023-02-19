@@ -7,12 +7,19 @@ export function createDiv(divClass) {
   return div;
 }
 
-export function createFolder() {
-  const newFolder = createButton("new-folder sub-cat", "TEST NEW");
-  const selector = document.querySelector(".to-do-buttons");
-  selector.appendChild(newFolder);
-
-  return newFolder;
+export function createFolder(e) {
+  const folderName = document.querySelector("#name-input");
+  const warning = document.querySelector(".warning");
+  if (folderName.value.length < 1) {
+    warning.classList = "warning display-warning";
+    return;
+  } else {
+    const newFolder = createButton("new-folder sub-cat", folderName.value);
+    const selector = document.querySelector(".to-do-buttons");
+    selector.appendChild(newFolder);
+    closeModal(e);
+    return newFolder;
+  }
 }
 
 export function createButton(className, textContent, btnId) {
@@ -84,9 +91,8 @@ export function appendToDo() {
 }
 
 export function submitFolderModal(e) {
-  console.log("submitTest");
-  createFolder();
-  closeModal(e);
+  createFolder(e);
+  // closeModal(e);
 }
 //modal functions
 export function displayModal(e) {
