@@ -1,9 +1,8 @@
-import { appendToDo, createDiv } from "./Domfunctionality.js";
+import { createDiv } from "./Domfunctionality.js";
 import { createButton } from "./Domfunctionality.js";
 import { createToDo } from "./Domfunctionality.js";
 import { closeModal } from "./Domfunctionality.js";
 import { displayToDoModal } from "./Domfunctionality.js";
-import { createToDoObject } from "./Domfunctionality.js";
 
 export function createMain() {
   const main = createDiv("main-content");
@@ -25,7 +24,6 @@ function addBtn() {
 
   addToDoBtn.addEventListener("click", (e) => {
     displayToDoModal();
-    // appendToDo();
   });
 
   return addToDoBtn;
@@ -33,7 +31,7 @@ function addBtn() {
 
 //creates inputs for new toDo
 export function toDoForm() {
-  const formParent = createDiv("new-todo-modal modal");
+  const formParent = createDiv("new-todo-modal modal hidden-modal");
 
   const closeFormModal = createButton("close-modal", "X");
   closeFormModal.addEventListener("click", (e) => {
