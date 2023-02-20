@@ -1,5 +1,3 @@
-import { toDo } from "./createtodo.js";
-
 export function createDiv(divClass) {
   const div = document.createElement("div");
   div.classList = divClass;
@@ -7,6 +5,23 @@ export function createDiv(divClass) {
   return div;
 }
 
+export function createButton(className, textContent, btnId) {
+  const button = document.createElement("button");
+  button.classList = className;
+  button.id = "undefined" ? (button.id = "") : (button.id = btnId);
+  button.textContent = textContent;
+
+  return button;
+}
+
+export function createCheckbox() {
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+
+  return checkbox;
+}
+
+//custom folder creation
 export function createFolder(e) {
   const folderName = document.querySelector("#name-input");
   const warning = document.querySelector(".warning");
@@ -40,22 +55,7 @@ function removeFolder(e) {
   parent.removeChild(folder);
 }
 
-export function createButton(className, textContent, btnId) {
-  const button = document.createElement("button");
-  button.classList = className;
-  button.id = "undefined" ? (button.id = "") : (button.id = btnId);
-  button.textContent = textContent;
-
-  return button;
-}
-
-export function createCheckbox() {
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-
-  return checkbox;
-}
-//to do elemnts
+//setting up to do elements for page
 let item = 0;
 export function createToDo() {
   const section = createDiv("to-do-item");
@@ -63,10 +63,10 @@ export function createToDo() {
   item++;
 
   const toDoTitle = createDiv("");
-  toDoTitle.textContent = "TEST";
+  toDoTitle.textContent = "TBD";
 
-  const dueDate = createDiv("");
-  dueDate.textContent = "DUE DATE TEST";
+  const uiDueDate = createDiv("");
+  uiDueDate.textContent = "TBD";
 
   const checkbox = createCheckbox();
 
@@ -76,12 +76,22 @@ export function createToDo() {
   });
 
   section.appendChild(toDoTitle);
-  section.appendChild(dueDate);
+  section.appendChild(uiDueDate);
   section.appendChild(checkbox);
   section.appendChild(deleteButton);
 
   return section;
 }
+
+//appending constructed to Do UI item
+export function appendToDo() {
+  const section = document.querySelector(".to-do-list");
+  const newToDo = createToDo();
+  section.appendChild(newToDo);
+
+  return section;
+}
+
 //removing to do item
 function removeToDo(e) {
   console.log("test");
@@ -98,14 +108,6 @@ function reIndexToDos() {
     toDo.dataset.item = item;
     item = item += 1;
   });
-}
-//appending final to Do
-export function appendToDo() {
-  const section = document.querySelector(".to-do-list");
-  const newToDo = createToDo();
-  section.appendChild(newToDo);
-
-  return section;
 }
 
 export function submitFolderModal(e) {
