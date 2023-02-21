@@ -49,24 +49,26 @@ export function createFolder(e) {
   }
 }
 
+//removing custom folders
 function removeFolder(e) {
   const parent = e.target.closest(".to-do-buttons");
   const folder = document.querySelector(".custom-div");
   parent.removeChild(folder);
 }
 
-//setting up to do elements for page
+//setting up to-do elements for page
 let item = 0;
-export function createToDo() {
+export function createToDo(e) {
+  console.log(e);
   const section = createDiv("to-do-item");
   section.dataset.item = item;
   item++;
 
   const toDoTitle = createDiv("");
-  toDoTitle.textContent = "TBD";
+  toDoTitle.textContent = e.title;
 
   const uiDueDate = createDiv("");
-  uiDueDate.textContent = "TBD";
+  uiDueDate.textContent = e.dueDate;
 
   const checkbox = createCheckbox();
 
@@ -83,24 +85,24 @@ export function createToDo() {
   return section;
 }
 
-//appending constructed to Do UI item
-export function appendToDo() {
+//appending constructed to-do UI item
+export function appendToDo(e) {
   const section = document.querySelector(".to-do-list");
-  const newToDo = createToDo();
+  const newToDo = createToDo(e);
   section.appendChild(newToDo);
 
   return section;
 }
 
 //removing to do item
-function removeToDo(e) {
-  console.log("test");
+export function removeToDo(e) {
   const toDoList = document.querySelector(".to-do-list");
   const removeItem = e.target.closest(".to-do-item");
   toDoList.removeChild(removeItem);
   reIndexToDos();
 }
-//reindexing the data attribute of the to dos
+
+//reindexing the data attribute of the to dos upon deletion
 function reIndexToDos() {
   const toDos = document.querySelectorAll(".to-do-item");
   item = 0;
@@ -110,10 +112,16 @@ function reIndexToDos() {
   });
 }
 
+//submitting modals
 export function submitFolderModal(e) {
   createFolder(e);
   // closeModal(e);
 }
+
+export function submitToDoModal(e) {
+  appendToDo(e);
+}
+
 //modal functions
 export function displayModal() {
   const modalSelected = document.querySelector(".new-folder-modal");

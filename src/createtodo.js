@@ -10,10 +10,10 @@ export const toDo = (title, dueDate, description) => {
 
 //add in date/time functionality
 
-//to Do List
-export function pushToDo(newToDo) {
-  let toDoList = [];
-  toDoList.push(newToDo);
+//add to list
+// function pushToDo(newToDo) {
+//   let toDoList = [];
+//   toDoList.push(newToDo);
 
-  return toDoList;
-}
+//   return toDoList;
+// }
