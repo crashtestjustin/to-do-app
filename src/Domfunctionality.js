@@ -29,7 +29,10 @@ export function createFolder(e) {
     warning.classList = "warning display-warning";
     return;
   } else {
-    const newFolder = createButton("new-folder sub-cat", folderName.value);
+    const newFolder = createButton(
+      "new-folder sub-cat",
+      folderName.value.toUpperCase()
+    );
     const removeCustom = createButton("remove", "x");
     const customDiv = document.createElement("div");
     customDiv.classList = "custom-div";
@@ -65,10 +68,10 @@ export function createToDo(e) {
   item++;
 
   const toDoTitle = createDiv("");
-  toDoTitle.textContent = e.title;
+  toDoTitle.textContent = e.title.toUpperCase();
 
   const uiDueDate = createDiv("");
-  uiDueDate.textContent = e.dueDate;
+  uiDueDate.textContent = e.dueDate.toUpperCase();
 
   const checkbox = createCheckbox();
 
@@ -85,11 +88,38 @@ export function createToDo(e) {
   return section;
 }
 
+//setting up details section of to do
+let deets = 0;
+export function toDetails() {
+  const section = createDiv("to-do-details");
+  section.dataset.item = item;
+  deets++;
+
+  const expDueDate = createDiv("");
+  expDueDate.textContent = "TEsT Date";
+  section.appendChild(expDueDate);
+
+  const timeDue = createDiv("");
+  timeDue.textContent = "TEST TIME";
+  section.appendChild(timeDue);
+
+  const editBtn = createButton("edit-button", "EDIT");
+  section.appendChild(editBtn);
+
+  const descBox = document.createElement("textarea");
+  descBox.textContent = "TEXT DESCRIPTION";
+  section.appendChild(descBox);
+
+  return section;
+}
+
 //appending constructed to-do UI item
 export function appendToDo(e) {
   const section = document.querySelector(".to-do-list");
   const newToDo = createToDo(e);
+  const newDetails = toDetails();
   section.appendChild(newToDo);
+  section.appendChild(newDetails);
 
   return section;
 }
@@ -115,7 +145,6 @@ function reIndexToDos() {
 //submitting modals
 export function submitFolderModal(e) {
   createFolder(e);
-  // closeModal(e);
 }
 
 export function submitToDoModal(e) {
@@ -152,4 +181,32 @@ export function closeModal(e) {
     .classList.add("hidden-modal");
 
   return modalSelected;
+}
+
+//sample to do
+let item2 = 0;
+export function createSampleToDo() {
+  const section = createDiv("to-do-item");
+  section.dataset.item = item;
+  item2++;
+
+  const toDoTitle = createDiv("");
+  toDoTitle.textContent = "SAMPLE";
+
+  const uiDueDate = createDiv("");
+  uiDueDate.textContent = "SMAPLE";
+
+  const checkbox = createCheckbox();
+
+  const deleteButton = createButton("delete", "🗑️");
+  deleteButton.addEventListener("click", (e) => {
+    removeToDo(e);
+  });
+
+  section.appendChild(toDoTitle);
+  section.appendChild(uiDueDate);
+  section.appendChild(checkbox);
+  section.appendChild(deleteButton);
+
+  return section;
 }
