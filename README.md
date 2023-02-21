@@ -7,6 +7,7 @@
 need to continue by setting up functionality for to dos:
 
 - styling the description section and adding in the collapsible capability
+- form validation for to do modal
 - date functionality (date node from odin example)
 - mark complete functionality (mostly CSS but maybe some added functionality [move to bottom of list???])
 - tagging function to add to folders as needed

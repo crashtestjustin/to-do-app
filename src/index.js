@@ -1,7 +1,7 @@
 import { createHeader } from "./header.js";
 import { createNav } from "./navigation.js";
 import { createMain } from "./mainContent.js";
-import { closeModal, createDiv } from "./Domfunctionality.js";
+import { createDiv } from "./Domfunctionality.js";
 import { folderForm } from "./navigation.js";
 import { toDoForm } from "./mainContent.js";
 
