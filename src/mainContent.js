@@ -4,12 +4,16 @@ import { closeModal } from "./Domfunctionality.js";
 import { displayToDoModal } from "./Domfunctionality.js";
 import { submitToDoModal } from "./Domfunctionality.js";
 import { toDo } from "./createtodo.js";
+import { createSampleToDo } from "./Domfunctionality.js";
+import { toDetails } from "./Domfunctionality.js";
 
 export function createMain() {
   const main = createDiv("main-content");
 
   const toDoList = document.createElement("div");
   toDoList.classList = "to-do-list";
+  toDoList.appendChild(createSampleToDo());
+  toDoList.appendChild(toDetails());
 
   const addToDoBtn = addBtn();
 
@@ -36,6 +40,9 @@ export function toDoForm() {
   const closeFormModal = createButton("close-modal", "X");
   closeFormModal.addEventListener("click", (e) => {
     closeModal(e);
+    toDoName.value = "";
+    dueDate.value = "";
+    desc.value = "";
   });
 
   const warning = document.createElement("div");
@@ -74,12 +81,12 @@ export function toDoForm() {
   const formSubmit = createButton("new-submit-button", "SUBMIT");
   formSubmit.type = "submit";
   formSubmit.addEventListener("click", (e) => {
-    const toDoName = document.querySelector("#todo-name-input");
-    const toDueDate = document.querySelector("#due-date-input");
-    const toDescription = document.querySelector("#desc-input");
-    const toDoOne = toDo(toDoName.value, toDueDate.value, toDescription.value);
+    const toDoOne = toDo(toDoName.value, dueDate.value, desc.value);
     submitToDoModal(toDoOne);
     closeModal(e);
+    toDoName.value = "";
+    dueDate.value = "";
+    desc.value = "";
   });
 
   formParent.appendChild(closeFormModal);
