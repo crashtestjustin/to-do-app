@@ -68,6 +68,7 @@ export function folderForm() {
   const closeFormModal = createButton("close-modal", "X");
   closeFormModal.addEventListener("click", (e) => {
     closeModal(e);
+    folderName.value = "";
   });
 
   const folderLabel = document.createElement("label");
