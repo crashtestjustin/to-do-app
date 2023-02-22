@@ -97,7 +97,7 @@ export function createToDo(e) {
 //setting up details section of to do
 let deets = 0;
 export function toDetails(e) {
-  const sectionWrap = createDiv("description-wrapper");
+  const sectionWrap = createDiv("description-wrapper collapsed-desc");
   sectionWrap.dataset.item = deets;
   deets++;
 
@@ -130,8 +130,6 @@ export function toDetails(e) {
 //appending constructed to-do UI item
 export function appendToDo(e) {
   const section = document.querySelector(".to-do-list");
-  const todoInput = document.querySelectorAll(".todo-input");
-  const toDoWarning = document.querySelector(".to-do-warning");
   const newToDo = createToDo(e);
   const newDetails = toDetails(e);
   section.appendChild(newToDo);
@@ -142,7 +140,6 @@ export function appendToDo(e) {
 
 //removing to do item
 export function removeToDo(e) {
-  const toDoList = document.querySelector(".to-do-list");
   const toDoItem = e.target.closest(".to-do-item");
   const removeDescription = document.querySelectorAll(".description-wrapper");
   let i = toDoItem.dataset.item;
@@ -155,6 +152,18 @@ export function removeToDo(e) {
   });
   toDoItem.remove();
   reIndexToDos();
+}
+
+function expandSection(e) {
+  const toDoItem = e.target.closest(".to-do-item");
+  const collapseDesc = document.querySelectorAll(".description-wrapper");
+  let i = toDoItem.dataset.item;
+  collapseDesc.forEach((desc) => {
+    const dNum = desc.getAttribute("data-item");
+    if (dNum === i) {
+      desc.classList.toggle("collapsed-desc");
+    }
+  });
 }
 
 //reindexing the data attribute of the to dos upon deletion
@@ -212,11 +221,4 @@ export function closeModal(e) {
     .classList.add("hidden-modal");
 
   return modalSelected;
-}
-
-function expandSection(e) {
-  var details = document.querySelectorAll(".description-wrapper");
-  for (var i = 0; i < details.length; i++) {
-    details[i].classList.toggle("collapsed-desc");
-  }
 }
