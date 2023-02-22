@@ -182,7 +182,7 @@ button {
 
 .to-do-item {
   display: grid;
-  grid-template-columns: min-content auto repeat(3, max-content);
+  grid-template-columns: auto repeat(3, max-content);
   grid-column-gap: 20px;
   align-items: center;
   background-color: lightcoral;

@@ -6,7 +6,7 @@
 
 need to continue by setting up functionality for to dos:
 
-- date functionality (date node from odin example)
+- date functionality (date node from odin example) USE MODULE TO UPDATE FORMATTING!
 - mark complete functionality (mostly CSS but maybe some added functionality [move to bottom of list???])
 - update/fix expand capability for to dos
 - tagging function to add to folders as needed

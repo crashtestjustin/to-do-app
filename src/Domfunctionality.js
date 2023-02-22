@@ -1,3 +1,5 @@
+import { toDo } from "./createtodo";
+
 export function createDiv(divClass) {
   const div = document.createElement("div");
   div.classList = divClass;
@@ -67,8 +69,7 @@ export function createToDo(e) {
   section.dataset.item = item;
   item++;
 
-  const expandIcon = createButton("expand-icon", "▶️");
-  expandIcon.addEventListener("click", (e) => {
+  section.addEventListener("click", (e) => {
     expandSection(e);
   });
 
@@ -85,7 +86,6 @@ export function createToDo(e) {
     removeToDo(e);
   });
 
-  section.appendChild(expandIcon);
   section.appendChild(toDoTitle);
   section.appendChild(uiDueDate);
   section.appendChild(checkbox);
@@ -97,11 +97,11 @@ export function createToDo(e) {
 //setting up details section of to do
 let deets = 0;
 export function toDetails(e) {
-  const sectionwrap = createDiv("description-wrapper");
+  const sectionWrap = createDiv("description-wrapper");
+  sectionWrap.dataset.item = deets;
+  deets++;
 
   const section = createDiv("to-do-details");
-  section.dataset.item = deets;
-  deets++;
 
   const expDueDate = createDiv("");
   expDueDate.textContent = e.dueDate;
@@ -122,9 +122,9 @@ export function toDetails(e) {
   descBox.placeholder = "description...";
   wrapper.appendChild(descBox);
 
-  sectionwrap.appendChild(section);
+  sectionWrap.appendChild(section);
 
-  return sectionwrap;
+  return sectionWrap;
 }
 
 //appending constructed to-do UI item
@@ -143,18 +143,33 @@ export function appendToDo(e) {
 //removing to do item
 export function removeToDo(e) {
   const toDoList = document.querySelector(".to-do-list");
-  const removeItem = e.target.closest(".to-do-item");
-  toDoList.removeChild(removeItem);
+  const toDoItem = e.target.closest(".to-do-item");
+  const removeDescription = document.querySelectorAll(".description-wrapper");
+  let i = toDoItem.dataset.item;
+  removeDescription.forEach((description) => {
+    const descNum = description.getAttribute("data-item");
+    if (descNum === i) {
+      console.log(descNum);
+      description.remove();
+    }
+  });
+  toDoItem.remove();
   reIndexToDos();
 }
 
 //reindexing the data attribute of the to dos upon deletion
 function reIndexToDos() {
   const toDos = document.querySelectorAll(".to-do-item");
+  const dWrapper = document.querySelectorAll(".description-wrapper");
   item = 0;
+  deets = 0;
   toDos.forEach((toDo) => {
     toDo.dataset.item = item;
     item = item += 1;
+  });
+  dWrapper.forEach((wrapper) => {
+    wrapper.dataset.item = deets;
+    deets = deets += 1;
   });
 }
 
