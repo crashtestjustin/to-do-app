@@ -1,8 +1,8 @@
-export const toDo = (title, dueDate, description) => {
+export const toDo = (title, dueDate, dueTime, description) => {
   return {
     title: title,
     dueDate: dueDate,
-    // dueTime: dueTime,
+    dueTime: dueTime,
     description: description,
     complete: false,
   };

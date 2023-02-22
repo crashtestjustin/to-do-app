@@ -108,7 +108,7 @@ export function toDetails(e) {
   section.appendChild(expDueDate);
 
   const timeDue = createDiv("");
-  timeDue.textContent = "TEST TIME";
+  timeDue.textContent = e.dueTime;
   section.appendChild(timeDue);
 
   const editBtn = createButton("edit-button", "EDIT");

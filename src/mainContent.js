@@ -58,13 +58,24 @@ export function toDoForm() {
   const dateDiv = createDiv("date-div");
 
   const dateLabel = document.createElement("label");
-  dateLabel.htmlFor = "due-date-label";
+  dateLabel.htmlFor = "due-date-input";
   dateLabel.textContent = "Due Date:";
 
   const dueDate = document.createElement("input");
-  dueDate.type = "text";
+  dueDate.type = "date";
   dueDate.id = "due-date-input";
   dueDate.classList = "todo-input";
+
+  const timeDiv = createDiv("time-div");
+
+  const timeLabel = document.createElement("label");
+  timeLabel.htmlFor = "due-time-input";
+  timeLabel.textContent = "Time:";
+
+  const dueTime = document.createElement("input");
+  dueTime.type = "time";
+  dueTime.id = "due-time-input";
+  dueTime.classList = "todo-input";
 
   const descDiv = createDiv("description");
 
@@ -80,11 +91,17 @@ export function toDoForm() {
   const formSubmit = createButton("new-submit-button", "SUBMIT");
   formSubmit.type = "submit";
   formSubmit.addEventListener("click", (e) => {
-    const toDoOne = toDo(toDoName.value, dueDate.value, desc.value);
+    const toDoOne = toDo(
+      toDoName.value,
+      dueDate.value,
+      dueTime.value,
+      desc.value
+    );
     submitToDoModal(toDoOne);
     closeModal(e);
     toDoName.value = "";
     dueDate.value = "";
+    dueTime.value = "";
     desc.value = "";
   });
 
@@ -96,6 +113,9 @@ export function toDoForm() {
   dateDiv.appendChild(dateLabel);
   dateDiv.appendChild(dueDate);
   formParent.appendChild(dateDiv);
+  timeDiv.appendChild(timeLabel);
+  timeDiv.appendChild(dueTime);
+  formParent.appendChild(timeDiv);
   descDiv.appendChild(descLabel);
   descDiv.appendChild(desc);
   formParent.appendChild(descDiv);
