@@ -154,18 +154,6 @@ export function removeToDo(e) {
   reIndexToDos();
 }
 
-function expandSection(e) {
-  const toDoItem = e.target.closest(".to-do-item");
-  const collapseDesc = document.querySelectorAll(".description-wrapper");
-  let i = toDoItem.dataset.item;
-  collapseDesc.forEach((desc) => {
-    const dNum = desc.getAttribute("data-item");
-    if (dNum === i) {
-      desc.classList.toggle("collapsed-desc");
-    }
-  });
-}
-
 //reindexing the data attribute of the to dos upon deletion
 function reIndexToDos() {
   const toDos = document.querySelectorAll(".to-do-item");
@@ -221,4 +209,17 @@ export function closeModal(e) {
     .classList.add("hidden-modal");
 
   return modalSelected;
+}
+
+//expand to do sections
+function expandSection(e) {
+  const toDoItem = e.target.closest(".to-do-item");
+  const collapseDesc = document.querySelectorAll(".description-wrapper");
+  let i = toDoItem.dataset.item;
+  collapseDesc.forEach((desc) => {
+    const dNum = desc.getAttribute("data-item");
+    if (dNum === i) {
+      desc.classList.toggle("collapsed-desc");
+    }
+  });
 }
