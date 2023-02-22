@@ -69,7 +69,7 @@ export function createToDo(e) {
 
   const expandIcon = createButton("expand-icon", "▶️");
   expandIcon.addEventListener("click", (e) => {
-    expandSection();
+    expandSection(e);
   });
 
   const toDoTitle = createDiv("");
@@ -130,6 +130,8 @@ export function toDetails(e) {
 //appending constructed to-do UI item
 export function appendToDo(e) {
   const section = document.querySelector(".to-do-list");
+  const todoInput = document.querySelectorAll(".todo-input");
+  const toDoWarning = document.querySelector(".to-do-warning");
   const newToDo = createToDo(e);
   const newDetails = toDetails(e);
   section.appendChild(newToDo);
@@ -197,13 +199,9 @@ export function closeModal(e) {
   return modalSelected;
 }
 
-function expandSection() {
+function expandSection(e) {
   var details = document.querySelectorAll(".description-wrapper");
   for (var i = 0; i < details.length; i++) {
-    if (details[i].style.maxHeight) {
-      details[i].style.removeProperty("max-height");
-    } else {
-      details[i].style.maxHeight = 0;
-    }
+    details[i].classList.toggle("collapsed-desc");
   }
 }

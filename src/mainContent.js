@@ -42,7 +42,7 @@ export function toDoForm() {
   });
 
   const warning = document.createElement("div");
-  warning.classList = "warning";
+  warning.classList = "to-do-warning";
 
   const nameDiv = createDiv("name-div");
 
@@ -53,6 +53,7 @@ export function toDoForm() {
   const toDoName = document.createElement("input");
   toDoName.type = "text";
   toDoName.id = "todo-name-input";
+  toDoName.classList = "todo-input";
 
   const dateDiv = createDiv("date-div");
 
@@ -63,6 +64,7 @@ export function toDoForm() {
   const dueDate = document.createElement("input");
   dueDate.type = "text";
   dueDate.id = "due-date-input";
+  dueDate.classList = "todo-input";
 
   const descDiv = createDiv("description");
 
@@ -73,6 +75,7 @@ export function toDoForm() {
   const desc = document.createElement("input");
   desc.type = "text";
   desc.id = "desc-input";
+  desc.classList = "todo-input";
 
   const formSubmit = createButton("new-submit-button", "SUBMIT");
   formSubmit.type = "submit";
