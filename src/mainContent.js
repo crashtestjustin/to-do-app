@@ -4,16 +4,12 @@ import { closeModal } from "./Domfunctionality.js";
 import { displayToDoModal } from "./Domfunctionality.js";
 import { submitToDoModal } from "./Domfunctionality.js";
 import { toDo } from "./createtodo.js";
-import { createSampleToDo } from "./Domfunctionality.js";
-import { toDetails } from "./Domfunctionality.js";
 
 export function createMain() {
   const main = createDiv("main-content");
 
   const toDoList = document.createElement("div");
   toDoList.classList = "to-do-list";
-  toDoList.appendChild(createSampleToDo());
-  toDoList.appendChild(toDetails());
 
   const addToDoBtn = addBtn();
 

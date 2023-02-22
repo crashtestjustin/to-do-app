@@ -1,4 +1,5 @@
 :root {
+  --standard-border-radius: 5px;
 }
 
 body {
@@ -163,25 +164,28 @@ button {
 
 .main-content button {
   justify-self: end;
-  width: 125px;
-  height: 125px;
   border-radius: 75px;
   margin: 15px;
+}
+
+.add-to-do-btn {
   font-size: 2rem;
+  width: 125px;
+  height: 125px;
+}
+
+.to-do-item,
+.to-do-details {
+  padding: 30px;
+  margin: 15px 15px 0 15px;
 }
 
 .to-do-item {
   display: grid;
-  grid-template-columns: auto repeat(3, max-content);
+  grid-template-columns: min-content auto repeat(3, max-content);
   grid-column-gap: 20px;
   align-items: center;
   background-color: lightcoral;
-  padding: 30px;
-  margin: 15px;
-}
-
-.to-do-details {
-  background-color: yellowgreen;
 }
 
 .to-do-item button {
@@ -189,7 +193,61 @@ button {
   height: 50px;
 }
 
+.expand-icon {
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+}
+
 .to-do-item input[type="checkbox"] {
   width: 25px;
   height: 25px;
+}
+
+.description-wrapper {
+  display: block;
+  overflow: hidden;
+  /* max-height: 0; */
+}
+
+.to-do-details {
+  margin-top: 0;
+  margin-bottom: 15px;
+  background-color: yellowgreen;
+  display: grid;
+  grid-template: repeat(2, 1fr) minmax(min-content, 100px) / repeat(2, 1fr);
+}
+
+.edit-button {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  width: 50px;
+  height: 50px;
+  font-size: 1rem;
+}
+
+.text-area-wrapper {
+  grid-column: 1 / 3;
+  display: grid;
+}
+
+.text-area-wrapper textarea {
+  grid-column: 1/2;
+  width: auto;
+  height: auto;
+  resize: none;
+  outline: none;
+  border-radius: var(--standard-border-radius);
+  border-color: #bfbfbf;
+  padding: 15px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 0px;
+}
+
+.text-area-wrapper textarea:is(:focus) {
+  border-width: 2px;
+  border-color: #7f7f7f;
+  padding: 14px;
 }
