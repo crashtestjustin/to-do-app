@@ -8,6 +8,7 @@ need to continue by setting up functionality for to dos:
 
 - prevent expand and collapse when clicking delete icon on a to do
 - styling for exapnd and collapse + update styling for app
+- change field types as needed & create event to make fields editable after clicking the edit button on the description
 - date functionality (date node from odin example) USE MODULE TO UPDATE FORMATTING!
 - mark complete functionality (mostly CSS but maybe some added functionality [move to bottom of list???])
 - tagging function to add to folders as needed

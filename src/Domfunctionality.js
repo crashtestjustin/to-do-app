@@ -99,6 +99,7 @@ let deets = 0;
 export function toDetails(e) {
   const sectionWrap = createDiv("description-wrapper collapsed-desc");
   sectionWrap.dataset.item = deets;
+  sectionWrap.style.maxHeight = "0";
   deets++;
 
   const section = createDiv("to-do-details");
@@ -216,10 +217,26 @@ function expandSection(e) {
   const toDoItem = e.target.closest(".to-do-item");
   const collapseDesc = document.querySelectorAll(".description-wrapper");
   let i = toDoItem.dataset.item;
+
+  // this code required sections to be expanded and minimized manually
+
   collapseDesc.forEach((desc) => {
     const dNum = desc.getAttribute("data-item");
     if (dNum === i) {
-      desc.classList.toggle("collapsed-desc");
+      desc.style.maxHeight =
+        desc.style.maxHeight === "0px" ? `${content.scrollHeight}px` : "0";
     }
   });
+
+  //below code makes other sections collapse when another section is expanded
+
+  // collapseDesc.forEach((desc) => {
+  //   const dNum = desc.getAttribute("data-item");
+  //   if (dNum === i) {
+  //     desc.style.maxHeight =
+  //       desc.style.maxHeight === "0px" ? `${desc.scrollHeight}px` : "0";
+  //   } else {
+  //     desc.style.maxHeight = "0";
+  //   }
+  // });
 }
