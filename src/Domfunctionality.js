@@ -24,6 +24,7 @@ export function createCheckbox() {
 }
 
 //custom folder creation
+let folderIndex = 0;
 export function createFolder(e) {
   const folderName = document.querySelector("#name-input");
   const warning = document.querySelector(".warning");
@@ -35,9 +36,11 @@ export function createFolder(e) {
       "new-folder sub-cat",
       folderName.value.toUpperCase()
     );
-    const removeCustom = createButton("remove", "x");
     const customDiv = document.createElement("div");
     customDiv.classList = "custom-div";
+    customDiv.dataset.index = folderIndex;
+    const removeCustom = createButton("remove", "x");
+    folderIndex++;
 
     removeCustom.addEventListener("click", (e) => {
       removeFolder(e);
@@ -56,9 +59,16 @@ export function createFolder(e) {
 
 //removing custom folders
 function removeFolder(e) {
-  const parent = e.target.closest(".to-do-buttons");
-  const folder = document.querySelector(".custom-div");
-  parent.removeChild(folder);
+  const customFolderDiv = e.target.closest(".custom-div");
+  const removeButtons = document.querySelectorAll(".custom-div");
+  let i = customFolderDiv.dataset.index;
+  removeButtons.forEach((button) => {
+    const xNum = button.getAttribute("data-index");
+    if (xNum === i) {
+      button.remove();
+    }
+  });
+  reindexCustomFolders();
 }
 
 //setting up to-do elements for page
@@ -169,6 +179,15 @@ function reIndexToDos() {
   dWrapper.forEach((wrapper) => {
     wrapper.dataset.item = deets;
     deets = deets += 1;
+  });
+}
+
+function reindexCustomFolders() {
+  const customFolder = document.querySelectorAll(".custom-div");
+  folderIndex = 0;
+  customFolder.forEach((folder) => {
+    folder.dataset.index = folderIndex;
+    folderIndex = folderIndex += 1;
   });
 }
 
