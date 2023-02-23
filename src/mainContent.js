@@ -83,8 +83,8 @@ export function toDoForm() {
   descLabel.htmlFor = "desc-input";
   descLabel.textContent = "Description:";
 
-  const desc = document.createElement("input");
-  desc.type = "text";
+  const desc = document.createElement("textarea");
+  // desc.type = "text";
   desc.id = "desc-input";
   desc.classList = "todo-input";
 

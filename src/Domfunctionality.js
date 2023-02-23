@@ -1,5 +1,3 @@
-import { toDo } from "./createtodo";
-
 export function createDiv(divClass) {
   const div = document.createElement("div");
   div.classList = divClass;
