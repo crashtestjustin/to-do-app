@@ -152,6 +152,7 @@ export function removeToDo(e) {
     }
   });
   toDoItem.remove();
+  e.stopPropagation();
   reIndexToDos();
 }
 
