@@ -90,6 +90,9 @@ export function createToDo(e) {
   uiDueDate.textContent = e.dueDate.toUpperCase();
 
   const checkbox = createCheckbox();
+  checkbox.addEventListener("click", (e) => {
+    markComplete(e);
+  });
 
   const deleteButton = createButton("delete", "🗑️");
   deleteButton.addEventListener("click", (e) => {
@@ -104,7 +107,7 @@ export function createToDo(e) {
   return section;
 }
 
-//setting up details section of to do
+//setting up expanding details section of to do
 let deets = 0;
 export function toDetails(e) {
   const sectionWrap = createDiv("description-wrapper collapsed-desc");
@@ -114,7 +117,6 @@ export function toDetails(e) {
 
   const section = createDiv("to-do-details");
 
-  // const expDueDate = createDiv("");
   const expDueDate = document.createElement("input");
   expDueDate.type = "date";
   expDueDate.id = "description-date";
@@ -122,7 +124,6 @@ export function toDetails(e) {
   expDueDate.disabled = true;
   section.appendChild(expDueDate);
 
-  // const timeDue = createDiv("");
   const timeDue = document.createElement("input");
   timeDue.type = "time";
   timeDue.id = "description-time";
@@ -151,7 +152,7 @@ export function toDetails(e) {
   return sectionWrap;
 }
 
-//appending constructed to-do UI item
+//appending constructed to-do UI item from above
 export function appendToDo(e) {
   const section = document.querySelector(".to-do-list");
   const newToDo = createToDo(e);
@@ -194,6 +195,7 @@ function reIndexToDos() {
   });
 }
 
+//reindexing the data attr of custom folders upon removal of a custom folder
 function reindexCustomFolders() {
   const customFolder = document.querySelectorAll(".custom-div");
   folderIndex = 0;
@@ -212,7 +214,7 @@ export function submitToDoModal(e) {
   appendToDo(e);
 }
 
-//modal functions
+//display new folder modal
 export function displayModal() {
   const modalSelected = document.querySelector(".new-folder-modal");
   modalSelected.classList.remove("hidden-modal");
@@ -223,6 +225,7 @@ export function displayModal() {
   return modalSelected;
 }
 
+//display to do modal
 export function displayToDoModal() {
   const modalSelected = document.querySelector(".new-todo-modal");
   modalSelected.classList.remove("hidden-modal");
@@ -233,6 +236,7 @@ export function displayToDoModal() {
   return modalSelected;
 }
 
+//closing a modal
 export function closeModal(e) {
   const modalSelected = e.target.closest(".modal");
   modalSelected.classList.add("hidden-modal");
@@ -280,6 +284,7 @@ function expandSection(e) {
   // });
 }
 
+//enabling and saving the edits to a to Do
 function toggleEditing(e) {
   const selectedDesc = e.target.closest(".description-wrapper");
   const childInputs = selectedDesc.querySelectorAll("input");
@@ -310,5 +315,23 @@ function toggleEditing(e) {
       box.disabled = true;
     });
     e.target.textContent = "EDIT";
+  }
+}
+
+//marking the to do as completed
+function markComplete(e) {
+  const selectCheckBox = e.target;
+  const toDoItem = e.target.closest(".to-do-item");
+  const toDoNameAndDate = toDoItem.querySelectorAll("div");
+  e.stopPropagation();
+  if (selectCheckBox.checked === true) {
+    toDoNameAndDate.forEach((element) => {
+      element.style.textDecoration = "line-through";
+    });
+  } else {
+    toDoNameAndDate.forEach((element) => {
+      // element.style.textDecoration = "none";
+      element.style.removeProperty("text-decoration");
+    });
   }
 }

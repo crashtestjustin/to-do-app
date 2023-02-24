@@ -6,13 +6,12 @@
 
 need to continue by setting up functionality for to dos:
 
-- Create event to make fields editable ONLY after clicking the edit button on the description
-- date functionality (date node from odin example) USE MODULE TO UPDATE FORMATTING!
-- mark complete functionality (mostly CSS but maybe some added functionality [move to bottom of list???]) - DON'T FORGET THE STOP PROPAGATION!
+- date functionality (date node from odin example) USE MODULE TO UPDATE FORMATTING! - including warning if overdue
 - tagging function to add to folders as needed
-- expand capability for custom folders
+- expand/collapse capability for custom folders
 - form validation for to do modal
 - styling updates for remaining buttons and text areas and forms + update styling for app
+- maybe moving toDos marked complete to the bottom of the list????
 
 Add on
 
