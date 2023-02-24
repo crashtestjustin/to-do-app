@@ -72,9 +72,10 @@ function removeFolder(e) {
 //setting up to-do elements for page
 let item = 0;
 export function createToDo(e) {
-  console.log(e);
   const section = createDiv("to-do-item");
   section.dataset.item = item;
+  section.style.borderBottomLeftRadius = "var(--standard-border-radius)";
+  section.style.borderBottomRightRadius = "var(--standard-border-radius)";
   item++;
 
   section.addEventListener("click", (e) => {
@@ -85,6 +86,7 @@ export function createToDo(e) {
   toDoTitle.textContent = e.title.toUpperCase();
 
   const uiDueDate = createDiv("");
+  uiDueDate.classList = "due-date-display";
   uiDueDate.textContent = e.dueDate.toUpperCase();
 
   const checkbox = createCheckbox();
@@ -112,23 +114,36 @@ export function toDetails(e) {
 
   const section = createDiv("to-do-details");
 
-  const expDueDate = createDiv("");
-  expDueDate.textContent = e.dueDate;
+  // const expDueDate = createDiv("");
+  const expDueDate = document.createElement("input");
+  expDueDate.type = "date";
+  expDueDate.id = "description-date";
+  expDueDate.value = e.dueDate;
+  expDueDate.disabled = true;
   section.appendChild(expDueDate);
 
-  const timeDue = createDiv("");
-  timeDue.textContent = e.dueTime;
+  // const timeDue = createDiv("");
+  const timeDue = document.createElement("input");
+  timeDue.type = "time";
+  timeDue.id = "description-time";
+  timeDue.value = e.dueTime;
+  timeDue.disabled = true;
   section.appendChild(timeDue);
 
   const editBtn = createButton("edit-button", "EDIT");
   section.appendChild(editBtn);
+  editBtn.addEventListener("click", (e) => {
+    toggleEditing(e);
+  });
 
   const wrapper = createDiv("text-area-wrapper");
   section.appendChild(wrapper);
 
   const descBox = document.createElement("textarea");
   descBox.textContent = e.description;
+  descBox.id = "description-description";
   descBox.placeholder = "description...";
+  descBox.disabled = true;
   wrapper.appendChild(descBox);
 
   sectionWrap.appendChild(section);
@@ -155,7 +170,6 @@ export function removeToDo(e) {
   removeDescription.forEach((description) => {
     const descNum = description.getAttribute("data-item");
     if (descNum === i) {
-      console.log(descNum);
       description.remove();
     }
   });
@@ -244,6 +258,13 @@ function expandSection(e) {
       desc.style.maxHeight =
         desc.style.maxHeight === "0px" ? `${content.scrollHeight}px` : "0";
     }
+    if (desc.style.maxHeight === "0px") {
+      toDoItem.style.borderBottomLeftRadius = "var(--standard-border-radius)";
+      toDoItem.style.borderBottomRightRadius = "var(--standard-border-radius)";
+    } else {
+      toDoItem.style.removeProperty("border-bottom-left-radius");
+      toDoItem.style.removeProperty("border-bottom-right-radius");
+    }
   });
 
   //below code makes other sections collapse when another section is expanded
@@ -257,4 +278,37 @@ function expandSection(e) {
   //     desc.style.maxHeight = "0";
   //   }
   // });
+}
+
+function toggleEditing(e) {
+  const selectedDesc = e.target.closest(".description-wrapper");
+  const childInputs = selectedDesc.querySelectorAll("input");
+  const dBox = selectedDesc.querySelectorAll("textarea");
+  const toDoItem = document.querySelectorAll(".to-do-item");
+  const date = selectedDesc.querySelector("input[type='date']");
+  if (e.target.textContent === "EDIT") {
+    childInputs.forEach((input) => {
+      input.disabled = false;
+    });
+    dBox.forEach((box) => {
+      box.disabled = false;
+    });
+    e.target.textContent = "SAVE";
+  } else {
+    let i = selectedDesc.dataset.item;
+    toDoItem.forEach((item) => {
+      if (i === item.dataset.item) {
+        const dueDateDisplay = item.querySelector(".due-date-display");
+        dueDateDisplay.textContent = date.value;
+      }
+    });
+
+    childInputs.forEach((input) => {
+      input.disabled = true;
+    });
+    dBox.forEach((box) => {
+      box.disabled = true;
+    });
+    e.target.textContent = "EDIT";
+  }
 }
