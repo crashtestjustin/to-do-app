@@ -1,3 +1,5 @@
+import { removeMultiselectOption, updateOptionList } from "./multiselect";
+
 export function createDiv(divClass) {
   const div = document.createElement("div");
   div.classList = divClass;
@@ -48,6 +50,10 @@ export function createFolder(e) {
     customDiv.appendChild(removeCustom);
     const selector = document.querySelector(".to-do-buttons");
     selector.appendChild(customDiv);
+    updateOptionList(
+      folderName.value.toUpperCase(),
+      folderName.value.toUpperCase()
+    );
     closeModal(e);
     warning.classList = "warning";
     folderName.value = "";
@@ -67,6 +73,7 @@ function removeFolder(e) {
     }
   });
   reindexCustomFolders();
+  removeMultiselectOption(i);
 }
 
 //setting up to-do elements for page
