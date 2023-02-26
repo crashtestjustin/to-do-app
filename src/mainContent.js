@@ -22,10 +22,7 @@ export function createMain() {
 
 function addBtn() {
   const addToDoBtn = createButton("add-to-do-btn", "+");
-  const main = document.getElementById("content");
   addToDoBtn.addEventListener("click", (e) => {
-    const toDoFormAdd = toDoForm();
-    main.appendChild(toDoFormAdd);
     displayToDoModal();
   });
 

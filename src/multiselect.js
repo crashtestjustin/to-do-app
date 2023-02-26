@@ -1,19 +1,6 @@
-export function createMultiSelect(options = []) {
+export function createMultiSelect() {
   const multiSelect = document.createElement("select");
   multiSelect.multiple = true;
-
-  // Remove any existing options
-  while (multiSelect.firstChild) {
-    multiSelect.removeChild(multiSelect.firstChild);
-  }
-
-  // Populate the multiSelect with options
-  options.forEach((option) => {
-    const newOption = document.createElement("option");
-    newOption.value = option;
-    newOption.text = option;
-    multiSelect.appendChild(newOption);
-  });
 
   return multiSelect;
 }
