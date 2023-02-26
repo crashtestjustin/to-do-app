@@ -1,18 +1,3 @@
-// export function createMultiSelect() {
-//   const multiSelect = document.createElement("select");
-//   multiSelect.multiple = true;
-
-//   const options = updateOptionList();
-
-//   for (var i = 0; i < options.length; i++) {
-//     var option = document.createElement("option");
-//     option.value = options[i];
-//     option.text = options[i];
-//     multiSelect.appendChild(option);
-//   }
-//   return multiSelect;
-// }
-
 export function createMultiSelect(options = []) {
   const multiSelect = document.createElement("select");
   multiSelect.multiple = true;
@@ -39,14 +24,6 @@ export function updateOptionList(labelValue) {
     return options;
   } else {
     options.push(labelValue);
-    // const selectElement = document.getElementById("folder-select");
-    // selectElement.options.length = 0;
-    // options.forEach((option) => {
-    //   const optionElement = document.createElement("option");
-    //   optionElement.value = option;
-    //   optionElement.text = option;
-    //   selectElement.appendChild(optionElement);
-    // });
     updateMultiSelect(options);
     console.log(options);
     return options;
