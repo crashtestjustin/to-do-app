@@ -50,10 +50,7 @@ export function createFolder(e) {
     customDiv.appendChild(removeCustom);
     const selector = document.querySelector(".to-do-buttons");
     selector.appendChild(customDiv);
-    updateOptionList(
-      folderName.value.toUpperCase(),
-      folderName.value.toUpperCase()
-    );
+    updateOptionList(folderName.value.toUpperCase());
     closeModal(e);
     warning.classList = "warning";
     folderName.value = "";

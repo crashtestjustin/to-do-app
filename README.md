@@ -7,7 +7,7 @@
 need to continue by setting up functionality for to dos:
 
 - date functionality (date node from odin example) USE MODULE TO UPDATE FORMATTING - including warning if overdue
-- tagging function to add to folders as needed
+- tagging function to add to folders as needed - need to add dynamic multi-select dropdown to the toDo modal and the description section (make updateable as usual)
 - expand/collapse capability for custom folders
 - form validation for to do modal
 - styling updates for remaining buttons and text areas and forms + update styling for app

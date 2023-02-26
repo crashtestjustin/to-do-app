@@ -4,6 +4,7 @@ import { closeModal } from "./Domfunctionality.js";
 import { displayToDoModal } from "./Domfunctionality.js";
 import { submitToDoModal } from "./Domfunctionality.js";
 import { toDo } from "./createtodo.js";
+import { createMultiSelect, updateOptionList } from "./multiselect.js";
 
 export function createMain() {
   const main = createDiv("main-content");
@@ -21,8 +22,10 @@ export function createMain() {
 
 function addBtn() {
   const addToDoBtn = createButton("add-to-do-btn", "+");
-
+  const main = document.getElementById("content");
   addToDoBtn.addEventListener("click", (e) => {
+    const toDoFormAdd = toDoForm();
+    main.appendChild(toDoFormAdd);
     displayToDoModal();
   });
 
@@ -87,6 +90,16 @@ export function toDoForm() {
   desc.id = "desc-input";
   desc.classList = "todo-input";
 
+  const folderDiv = createDiv("folder-div");
+
+  const folderLabel = document.createElement("label");
+  folderLabel.htmlFor = "folder-select";
+  folderLabel.textContent = "Folders:";
+
+  const folderSelect = createMultiSelect(updateOptionList());
+  folderSelect.id = "folder-select";
+  folderSelect.placeholder = "Folders";
+
   const formSubmit = createButton("new-submit-button", "SUBMIT");
   formSubmit.type = "submit";
   formSubmit.addEventListener("click", (e) => {
@@ -118,6 +131,9 @@ export function toDoForm() {
   descDiv.appendChild(descLabel);
   descDiv.appendChild(desc);
   formParent.appendChild(descDiv);
+  folderDiv.appendChild(folderLabel);
+  folderDiv.appendChild(folderSelect);
+  formParent.appendChild(folderDiv);
   formParent.appendChild(formSubmit);
 
   return formParent;
