@@ -6,7 +6,7 @@
 
 need to continue by setting up functionality for to dos:
 
-- tagging function to add to folders as needed - need to add dynamic multi-select dropdown to the description section (make updateable as usual) -this will drive folder views
+- need to make the selected values in description multiselect remain when new folders are added
 - date functionality (date node from odin example) USE MODULE TO UPDATE FORMATTING - including warning if overdue
 - create folder views
 - expand/collapse capability for custom folders
