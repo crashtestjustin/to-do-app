@@ -1,4 +1,9 @@
-import { removeMultiselectOption, updateOptionList } from "./multiselect";
+import {
+  createMultiSelect,
+  removeMultiselectOption,
+  updateOptionList,
+  descriptionOptions,
+} from "./multiselect";
 
 export function createDiv(divClass) {
   const div = document.createElement("div");
@@ -150,6 +155,23 @@ export function toDetails(e) {
   descBox.placeholder = "description...";
   descBox.disabled = true;
   wrapper.appendChild(descBox);
+
+  const folders = createMultiSelect();
+  folders.id = "current-folders";
+  descriptionOptions.forEach((option) => {
+    const optionEl = document.createElement("option");
+    optionEl.value = option;
+    optionEl.textContent = option;
+    optionEl.classList = "d-folder-option";
+    e.folders.forEach((selectedFolder) => {
+      if (selectedFolder === option) {
+        optionEl.selected = true;
+      }
+    });
+    folders.appendChild(optionEl);
+  });
+
+  section.appendChild(folders);
 
   sectionWrap.appendChild(section);
 

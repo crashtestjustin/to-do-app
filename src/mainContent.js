@@ -100,12 +100,18 @@ export function toDoForm() {
   const formSubmit = createButton("new-submit-button", "SUBMIT");
   formSubmit.type = "submit";
   formSubmit.addEventListener("click", (e) => {
+    const selections = document.querySelectorAll(
+      "#folder-select option:checked"
+    );
+    const values = Array.from(selections).map(({ value }) => value);
     const toDoOne = toDo(
       toDoName.value,
       dueDate.value,
       dueTime.value,
-      desc.value
+      desc.value,
+      values
     );
+    console.log(toDoOne);
     submitToDoModal(toDoOne);
     closeModal(e);
     toDoName.value = "";

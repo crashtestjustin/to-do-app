@@ -5,7 +5,7 @@ export function createMultiSelect() {
   return multiSelect;
 }
 
-var options = [];
+export var options = [];
 export function updateOptionList(labelValue) {
   if (labelValue === undefined) {
     return options;
@@ -18,14 +18,26 @@ export function updateOptionList(labelValue) {
 }
 
 function updateMultiSelect(multiOptions) {
-  const select = document.querySelector("#folder-select");
-  select.innerHTML = "";
-  for (let i = 0; i < multiOptions.length; i++) {
-    const option = document.createElement("option");
-    option.value = multiOptions[i];
-    option.textContent = multiOptions[i];
-    select.appendChild(option);
-  }
+  const select = document.querySelectorAll("#folder-select");
+  const descFolders = document.querySelectorAll("#current-folders");
+  select.forEach((item) => {
+    item.innerHTML = "";
+    for (let i = 0; i < multiOptions.length; i++) {
+      const option = document.createElement("option");
+      option.value = multiOptions[i];
+      option.textContent = multiOptions[i];
+      item.appendChild(option);
+    }
+  });
+  descFolders.forEach((folderOption) => {
+    folderOption.innerHTML = "";
+    for (let i = 0; i < multiOptions.length; i++) {
+      const option = document.createElement("option");
+      option.value = multiOptions[i];
+      option.textContent = multiOptions[i];
+      folderOption.appendChild(option);
+    }
+  });
 }
 
 export function removeMultiselectOption(arrayIndex) {
@@ -33,3 +45,5 @@ export function removeMultiselectOption(arrayIndex) {
   console.log(options);
   updateMultiSelect(options);
 }
+
+export const descriptionOptions = options;
