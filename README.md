@@ -2,18 +2,17 @@
 
 \*\*need to leverage a "tag" system to allow for to do's to display in multiple folders
 
-\*\* would be great to be able to reorder custom folders
-
 need to continue by setting up functionality for to dos:
 
-- need to make the selected values in description multiselect remain when new folders are added
+- need to make the multiselect in the description disabled by default and update the toDoObjects array when removing toDo items
 - date functionality (date node from odin example) USE MODULE TO UPDATE FORMATTING - including warning if overdue
 - create folder views
 - expand/collapse capability for custom folders
 - form validation for to do modal
 - styling updates for remaining buttons and text areas and forms + update styling for app
-- maybe moving toDos marked complete to the bottom of the list????
 
 Add on
 
 - pomodoro timer
+  \*\* would be great to be able to reorder custom folders
+- maybe moving toDos marked complete to the bottom of the list????
