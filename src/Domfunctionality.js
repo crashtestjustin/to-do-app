@@ -208,8 +208,6 @@ export function removeToDo(e) {
   toDoItem.remove();
   e.stopPropagation();
   toDoObjects.splice(i, 1);
-  // updateDescriptionMulti();
-  console.log(toDoObjects);
   reIndexToDos();
 }
 
@@ -351,15 +349,12 @@ function toggleEditing(e) {
       box.disabled = true;
     });
     const multiOptions = multiSelect.querySelectorAll("option");
-    console.log(toDoObjects[i]);
     toDoObjects[i].folders = [];
-    console.log(toDoObjects[i]);
     for (let j = 0; j < multiOptions.length; j++) {
       if (multiOptions[j].selected) {
         toDoObjects[i].folders.push(multiOptions[j].value);
       }
     }
-    console.log(toDoObjects[i]);
     multiSelect.disabled = true;
     e.target.textContent = "EDIT";
   }

@@ -111,7 +111,6 @@ export function toDoForm() {
       desc.value,
       values
     );
-    // console.log(toDoOne);
     submitToDoModal(toDoOne);
     closeModal(e);
     toDoName.value = "";
