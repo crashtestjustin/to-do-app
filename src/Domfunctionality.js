@@ -1,8 +1,10 @@
+import { toDoObjects } from "./createtodo";
 import {
   createMultiSelect,
   removeMultiselectOption,
   updateOptionList,
   descriptionOptions,
+  updateDescriptionMulti,
 } from "./multiselect";
 
 export function createDiv(divClass) {
@@ -56,6 +58,7 @@ export function createFolder(e) {
     const selector = document.querySelector(".to-do-buttons");
     selector.appendChild(customDiv);
     updateOptionList(folderName.value.toUpperCase());
+    updateDescriptionMulti();
     closeModal(e);
     warning.classList = "warning";
     folderName.value = "";
@@ -76,6 +79,7 @@ function removeFolder(e) {
   });
   reindexCustomFolders();
   removeMultiselectOption(i);
+  updateDescriptionMulti();
 }
 
 //setting up to-do elements for page

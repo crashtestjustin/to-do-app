@@ -1,3 +1,5 @@
+import { toDoObjects } from "./createtodo";
+
 export function createMultiSelect() {
   const multiSelect = document.createElement("select");
   multiSelect.multiple = true;
@@ -12,7 +14,6 @@ export function updateOptionList(labelValue) {
   } else {
     options.push(labelValue);
     updateMultiSelect(options);
-    console.log(options);
     return options;
   }
 }
@@ -42,8 +43,19 @@ function updateMultiSelect(multiOptions) {
 
 export function removeMultiselectOption(arrayIndex) {
   options.splice(arrayIndex, 1);
-  console.log(options);
   updateMultiSelect(options);
 }
 
 export const descriptionOptions = options;
+
+export function updateDescriptionMulti() {
+  const descMuiltiSelect = document.querySelectorAll("#current-folders");
+  for (let i = 0; i < descMuiltiSelect.length; i++) {
+    const multiOptions = descMuiltiSelect[i].querySelectorAll("option");
+    multiOptions.forEach((item) => {
+      if (toDoObjects[i].folders.includes(item.value)) {
+        item.selected = true;
+      }
+    });
+  }
+}
