@@ -4,7 +4,6 @@
 
 need to continue by setting up functionality for to dos:
 
-- need to make the multiselect in the description disabled by default and update the toDoObjects array when removing toDo items
 - date functionality (date node from odin example) USE MODULE TO UPDATE FORMATTING - including warning if overdue
 - create folder views
 - expand/collapse capability for custom folders
