@@ -1,4 +1,7 @@
+var toDoList = [];
+
 export const toDo = (title, dueDate, dueTime, description, folders) => {
+  pushToDoList(title, dueDate, dueTime, description, folders);
   return {
     title: title,
     dueDate: dueDate,
@@ -9,12 +12,9 @@ export const toDo = (title, dueDate, dueTime, description, folders) => {
   };
 };
 
-//add in date/time functionality
+function pushToDoList(title, dueDate, dueTime, description, folders) {
+  toDoList.push({ title, dueDate, dueTime, description, folders });
+  console.log(toDoList);
+}
 
-//add to list
-// function pushToDo(newToDo) {
-//   let toDoList = [];
-//   toDoList.push(newToDo);
-
-//   return toDoList;
-// }
+export const toDoObjects = toDoList;
