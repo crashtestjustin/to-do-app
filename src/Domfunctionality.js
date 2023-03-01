@@ -161,6 +161,7 @@ export function toDetails(e) {
   wrapper.appendChild(descBox);
 
   const folders = createMultiSelect();
+  folders.disabled = true;
   folders.id = "current-folders";
   descriptionOptions.forEach((option) => {
     const optionEl = document.createElement("option");
@@ -206,10 +207,13 @@ export function removeToDo(e) {
   });
   toDoItem.remove();
   e.stopPropagation();
+  toDoObjects.splice(i, 1);
+  // updateDescriptionMulti();
+  console.log(toDoObjects);
   reIndexToDos();
 }
 
-//reindexing the data attribute of the to dos upon deletion
+//reindexing the data attribute of the to dos and description wrappers upon deletion
 function reIndexToDos() {
   const toDos = document.querySelectorAll(".to-do-item");
   const dWrapper = document.querySelectorAll(".description-wrapper");
@@ -321,7 +325,9 @@ function toggleEditing(e) {
   const dBox = selectedDesc.querySelectorAll("textarea");
   const toDoItem = document.querySelectorAll(".to-do-item");
   const date = selectedDesc.querySelector("input[type='date']");
+  const multiSelect = selectedDesc.querySelector("select");
   if (e.target.textContent === "EDIT") {
+    multiSelect.disabled = false;
     childInputs.forEach((input) => {
       input.disabled = false;
     });
@@ -344,6 +350,17 @@ function toggleEditing(e) {
     dBox.forEach((box) => {
       box.disabled = true;
     });
+    const multiOptions = multiSelect.querySelectorAll("option");
+    console.log(toDoObjects[i]);
+    toDoObjects[i].folders = [];
+    console.log(toDoObjects[i]);
+    for (let j = 0; j < multiOptions.length; j++) {
+      if (multiOptions[j].selected) {
+        toDoObjects[i].folders.push(multiOptions[j].value);
+      }
+    }
+    console.log(toDoObjects[i]);
+    multiSelect.disabled = true;
     e.target.textContent = "EDIT";
   }
 }
