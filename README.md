@@ -4,7 +4,7 @@
 
 need to continue by setting up functionality for to dos:
 
-- date functionality (date node from odin example) USE MODULE TO UPDATE FORMATTING - including warning if overdue
+- date functionality warning if toDo is overdue
 - create folder views
 - expand/collapse capability for custom folders
 - form validation for to do modal
