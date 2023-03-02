@@ -117,6 +117,7 @@ export function toDoForm() {
     dueDate.value = "";
     dueTime.value = "";
     desc.value = "";
+    clearMultiSelect();
   });
 
   formParent.appendChild(closeFormModal);
@@ -139,4 +140,12 @@ export function toDoForm() {
   formParent.appendChild(formSubmit);
 
   return formParent;
+}
+
+function clearMultiSelect() {
+  const folderSelect = document.querySelector("#folder-select");
+  const opts = folderSelect.querySelectorAll("option");
+  opts.forEach((opt) => {
+    opt.selected = false;
+  });
 }

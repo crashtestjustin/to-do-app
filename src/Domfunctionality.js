@@ -1,4 +1,4 @@
-import { toDoObjects } from "./createtodo";
+import { toDoObjects, reformatDate } from "./createtodo";
 import {
   createMultiSelect,
   removeMultiselectOption,
@@ -100,7 +100,9 @@ export function createToDo(e) {
 
   const uiDueDate = createDiv("");
   uiDueDate.classList = "due-date-display";
-  uiDueDate.textContent = e.dueDate.toUpperCase();
+  const formattedDate = reformatDate(e.dueDate);
+  console.log(formattedDate);
+  uiDueDate.textContent = formattedDate.toUpperCase();
 
   const checkbox = createCheckbox();
   checkbox.addEventListener("click", (e) => {
@@ -338,7 +340,8 @@ function toggleEditing(e) {
     toDoItem.forEach((item) => {
       if (i === item.dataset.item) {
         const dueDateDisplay = item.querySelector(".due-date-display");
-        dueDateDisplay.textContent = date.value;
+        const reformattedDate = reformatDate(date.value);
+        dueDateDisplay.textContent = reformattedDate;
       }
     });
 
