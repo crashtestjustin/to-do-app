@@ -100,9 +100,12 @@ export function createToDo(e) {
 
   const uiDueDate = createDiv("");
   uiDueDate.classList = "due-date-display";
-  const formattedDate = reformatDate(e.dueDate);
-  console.log(formattedDate);
-  uiDueDate.textContent = formattedDate.toUpperCase();
+  if (e.dueDate === "") {
+    uiDueDate.textContent = "";
+  } else {
+    const formattedDate = reformatDate(e.dueDate);
+    uiDueDate.textContent = formattedDate.toUpperCase();
+  }
 
   const checkbox = createCheckbox();
   checkbox.addEventListener("click", (e) => {
