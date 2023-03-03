@@ -17,17 +17,17 @@ function application() {
   const modalBg = createDiv("modal-bg hidden-modal");
   app.appendChild(modalBg);
 
-  const newFolderModal = folderForm();
-  app.appendChild(newFolderModal);
-
-  const newToDoForm = toDoForm();
-  app.appendChild(newToDoForm);
-
   const navBar = createNav();
   app.appendChild(navBar);
 
   const mainContent = createMain();
   app.appendChild(mainContent);
+
+  const newFolderModal = folderForm();
+  app.appendChild(newFolderModal);
+
+  const newToDoForm = toDoForm();
+  app.appendChild(newToDoForm);
 
   return app;
 }
