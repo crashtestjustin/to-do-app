@@ -37,6 +37,7 @@ export function createFolder(e) {
   const warning = document.querySelector(".warning");
   if (folderName.value.length < 1) {
     warning.classList = "warning display-warning";
+    folderName.classList = "folder-name-input input-error";
     return;
   } else {
     const newFolder = createButton(
@@ -62,6 +63,7 @@ export function createFolder(e) {
     closeModal(e);
     warning.classList = "warning";
     folderName.value = "";
+    folderName.classList = "folder-name-input";
     return newFolder;
   }
 }

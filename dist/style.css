@@ -149,6 +149,25 @@ button.sub-cat {
   width: 92%;
 }
 
+div.to-do-warning {
+  display: flex;
+  justify-content: center;
+}
+
+.to-do-warning-notice::after {
+  content: "*Please provide a name for the To Do.";
+  color: red;
+  font-size: 1rem;
+}
+
+.label-error {
+  color: red;
+}
+
+input.input-error {
+  border: 2px solid red;
+}
+
 .new-folder-modal label {
   justify-self: center;
   align-self: end;
@@ -162,8 +181,11 @@ button.sub-cat {
   margin: 20px 0;
   padding: 2px 5px;
   font-size: 1.2rem;
-  border: 1px solid #000000;
   border-radius: 4px;
+}
+
+.new-folder-modal input.folder-name-input {
+  border: 1px solid #000000;
 }
 
 .new-folder-modal button {
@@ -180,6 +202,10 @@ button.sub-cat {
   content: "*Please enter a name for the folder";
   color: red;
   font-size: 1rem;
+}
+
+.new-folder-modal input.input-error {
+  border: 2px solid red;
 }
 
 .new-folder-button,
@@ -253,12 +279,6 @@ button.remove {
 .to-do-item input[type="checkbox"] {
   width: 25px;
   height: 25px;
-}
-
-.to-do-warning-notice::after {
-  content: "*PLease complete all required fields";
-  color: red;
-  font-size: 1rem;
 }
 
 .description-wrapper {

@@ -39,6 +39,9 @@ export function toDoForm() {
     toDoName.value = "";
     dueDate.value = "";
     desc.value = "";
+    warning.classList = "to-do-warning";
+    toDoName.classList = "todo-input";
+    toDoLabel.removeAttribute("class");
   });
 
   const warning = document.createElement("div");
@@ -100,24 +103,34 @@ export function toDoForm() {
   const formSubmit = createButton("new-submit-button", "SUBMIT");
   formSubmit.type = "submit";
   formSubmit.addEventListener("click", (e) => {
-    const selections = document.querySelectorAll(
-      "#folder-select option:checked"
-    );
-    const values = Array.from(selections).map(({ value }) => value);
-    const toDoOne = toDo(
-      toDoName.value,
-      dueDate.value,
-      dueTime.value,
-      desc.value,
-      values
-    );
-    submitToDoModal(toDoOne);
-    closeModal(e);
-    toDoName.value = "";
-    dueDate.value = "";
-    dueTime.value = "";
-    desc.value = "";
-    clearMultiSelect();
+    if (toDoName.value.length < 1) {
+      warning.classList = "to-do-warning to-do-warning-notice";
+      toDoName.classList = "todo-input input-error";
+      toDoLabel.classList = "label-error";
+      return;
+    } else {
+      const selections = document.querySelectorAll(
+        "#folder-select option:checked"
+      );
+      const values = Array.from(selections).map(({ value }) => value);
+      const toDoOne = toDo(
+        toDoName.value,
+        dueDate.value,
+        dueTime.value,
+        desc.value,
+        values
+      );
+      submitToDoModal(toDoOne);
+      closeModal(e);
+      warning.classList = "to-do-warning";
+      toDoName.classList = "todo-input";
+      toDoLabel.removeAttribute("class");
+      toDoName.value = "";
+      dueDate.value = "";
+      dueTime.value = "";
+      desc.value = "";
+      clearMultiSelect();
+    }
   });
 
   formParent.appendChild(closeFormModal);

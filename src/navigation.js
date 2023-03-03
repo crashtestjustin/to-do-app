@@ -69,6 +69,8 @@ export function folderForm() {
   closeFormModal.addEventListener("click", (e) => {
     closeModal(e);
     folderName.value = "";
+    folderName.classList = "folder-name-input";
+    warning.classList = "warning";
   });
 
   const folderLabel = document.createElement("label");
@@ -81,6 +83,7 @@ export function folderForm() {
   const folderName = document.createElement("input");
   folderName.type = "text";
   folderName.id = "name-input";
+  folderName.classList = "folder-name-input";
 
   const folderSubmit = createButton("new-folder-button", "SUBMIT");
   folderSubmit.type = "submit";
