@@ -4,8 +4,7 @@
 
 need to continue by setting up functionality for to dos:
 
-- form validation for to do modal
-- date functionality warning if toDo is overdue
+- date functionality warning if toDo is overdue (localstorage API)
 - create folder views
 - expand/collapse capability for custom folders
 
