@@ -18,7 +18,6 @@ export const toDo = (title, dueDate, dueTime, description, folders) => {
 //adding object to array
 function pushToDoList(title, dueDate, dueTime, description, folders) {
   toDoList.push({ title, dueDate, dueTime, description, folders });
-  console.log(toDoList);
 }
 
 //reformatting default date format into mm/dd/yyyy string
