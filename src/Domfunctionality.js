@@ -345,8 +345,12 @@ function toggleEditing(e) {
     toDoItem.forEach((item) => {
       if (i === item.dataset.item) {
         const dueDateDisplay = item.querySelector(".due-date-display");
-        const reformattedDate = reformatDate(date.value);
-        dueDateDisplay.textContent = reformattedDate;
+        if (date.value === "") {
+          dueDateDisplay.textContent = "";
+        } else {
+          const reformattedDate = reformatDate(date.value);
+          dueDateDisplay.textContent = reformattedDate;
+        }
       }
     });
 
