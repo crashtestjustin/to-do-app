@@ -7,8 +7,7 @@ need to continue by setting up functionality for to dos:
 - date functionality warning if toDo is overdue (localstorage API)
 - create folder views
 - expand/collapse capability for custom folders
-
-- styling updates for remaining buttons and text areas and forms + update styling for app
+- styling updates for remaining buttons and text areas and forms + expand/collapse dynamic icons
 
 Add on
 
