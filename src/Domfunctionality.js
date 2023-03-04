@@ -197,6 +197,7 @@ export function appendToDo(e) {
   const newDetails = toDetails(e);
   section.appendChild(newToDo);
   section.appendChild(newDetails);
+  checkForToDos();
 
   return section;
 }
@@ -216,6 +217,7 @@ export function removeToDo(e) {
   e.stopPropagation();
   toDoObjects.splice(i, 1);
   reIndexToDos();
+  checkForToDos();
 }
 
 //reindexing the data attribute of the to dos and description wrappers upon deletion
@@ -260,7 +262,6 @@ export function displayModal() {
   const overlay = document
     .querySelector(".modal-bg")
     .classList.remove("hidden-modal");
-
   return modalSelected;
 }
 
@@ -387,5 +388,40 @@ function markComplete(e) {
       // element.style.textDecoration = "none";
       element.style.removeProperty("text-decoration");
     });
+  }
+}
+
+//check for toDos tp enable expand button visibility
+function checkForToDos() {
+  const expandButton = document.querySelector(".expand-all");
+  const toDoItems = document.querySelector(".to-do-item");
+  if (toDoItems) {
+    expandButton.style.visibility = "visible";
+  } else {
+    expandButton.style.visibility = "hidden";
+  }
+}
+
+//expand descriptions toggle
+export function expandAll() {
+  const expandButton = document.querySelector(".expand-all");
+  const collapseDesc = document.querySelectorAll(".description-wrapper");
+  const toDoItem = document.querySelectorAll(".to-do-item");
+  if (expandButton.textContent === "Expand All") {
+    for (let i = 0; i < collapseDesc.length; i++) {
+      collapseDesc[i].style.maxHeight = `${content.scrollHeight}px`;
+      toDoItem[i].style.removeProperty("border-bottom-left-radius");
+      toDoItem[i].style.removeProperty("border-bottom-right-radius");
+    }
+    expandButton.textContent = "Collapse All";
+  } else {
+    for (let i = 0; i < collapseDesc.length; i++) {
+      collapseDesc[i].style.maxHeight = "0";
+      toDoItem[i].style.borderBottomLeftRadius =
+        "var(--standard-border-radius)";
+      toDoItem[i].style.borderBottomRightRadius =
+        "var(--standard-border-radius)";
+    }
+    expandButton.textContent = "Expand All";
   }
 }
