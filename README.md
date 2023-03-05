@@ -8,6 +8,7 @@ need to continue by setting up functionality for to dos:
 - create folder views
 - expand/collapse capability for custom folders
 - styling updates for remaining buttons and text areas and forms + expand/collapse dynamic icons
+- confirm folder item is being removed from object arrays when removed from navigation pane
 
 Add on
 
