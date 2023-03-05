@@ -3,7 +3,7 @@ import { createButton } from "./Domfunctionality.js";
 import { closeModal } from "./Domfunctionality.js";
 import { displayToDoModal } from "./Domfunctionality.js";
 import { submitToDoModal } from "./Domfunctionality.js";
-import { toDo } from "./createtodo.js";
+import { toDo, toDoObjects } from "./createtodo.js";
 import { createMultiSelect, updateOptionList } from "./multiselect.js";
 
 export function createMain() {
@@ -122,6 +122,7 @@ export function toDoForm() {
       );
       submitToDoModal(toDoOne);
       closeModal(e);
+      console.log(toDoObjects);
       warning.classList = "to-do-warning";
       toDoName.classList = "todo-input";
       toDoLabel.removeAttribute("class");

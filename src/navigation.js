@@ -3,6 +3,7 @@ import { createButton } from "./Domfunctionality.js";
 import { submitFolderModal } from "./Domfunctionality.js";
 import { closeModal } from "./Domfunctionality.js";
 import { displayModal } from "./Domfunctionality.js";
+import { renderFolderView } from "./folderviews.js";
 
 export function createNav() {
   const nav = createDiv("navigation");
@@ -22,6 +23,9 @@ export function createNav() {
 function toDoButtons() {
   const section = document.createElement("div");
   section.classList = "to-do-buttons";
+  section.addEventListener("click", (e) => {
+    renderFolderView(e);
+  });
 
   const allToDos = createButton("all-items main-cat", "ALL TO DO'S");
 
