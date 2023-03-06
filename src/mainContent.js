@@ -9,12 +9,15 @@ import { createMultiSelect, updateOptionList } from "./multiselect.js";
 export function createMain() {
   const main = createDiv("main-content");
 
+  const allToDoHolder = createDiv("all-to-dos");
+
   const toDoList = document.createElement("div");
   toDoList.classList = "to-do-list";
 
   const addToDoBtn = addBtn();
 
-  main.appendChild(toDoList);
+  allToDoHolder.appendChild(toDoList);
+  main.appendChild(allToDoHolder);
   main.appendChild(addToDoBtn);
 
   return main;

@@ -4,8 +4,9 @@
 
 need to continue by setting up functionality for to dos:
 
+- create folder views - need to create a new div that holds all to dos and then switch with other divs that hold partial todos that match folder selected
+
 - date functionality warning if toDo is overdue (localstorage API)
-- create folder views
 - expand/collapse capability for custom folders
 - styling updates for remaining buttons and text areas and forms + expand/collapse dynamic icons
 - confirm folder item is being removed from object arrays when removed from navigation pane

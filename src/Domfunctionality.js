@@ -170,6 +170,7 @@ export function toDetails(e) {
   const folders = createMultiSelect();
   folders.disabled = true;
   folders.id = "current-folders";
+  folders.classList = "description-multi";
   descriptionOptions.forEach((option) => {
     const optionEl = document.createElement("option");
     optionEl.value = option;
