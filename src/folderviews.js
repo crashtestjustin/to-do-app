@@ -4,18 +4,27 @@ import { createDiv } from "./Domfunctionality";
 
 function FolderViewContent(e) {
   const selectedButton = e.target.closest("button");
-  const toDoLists = document.querySelector(".all-to-dos");
   const allToDoItems = document.querySelector(".to-do-list");
+  const toDoLists = document.querySelector(".all-to-dos");
   const activeToDos = document.querySelectorAll(".to-do-item");
   const descriptionWrappers = document.querySelectorAll(".description-wrapper");
   const descriptions = document.querySelectorAll(".to-do-details");
 
+  //NEED TO ADD FILTERS FOR DATE-BASED FILTERING
+
   if (selectedButton.textContent === "FOLDERS") {
+    //NEED TO FIX ERROR HERE
     console.log("do nothing");
     return;
   }
   if (selectedButton.classList.contains("new-folder")) {
-    const filteredDiv = createDiv("filtered-div");
+    const existingfilter = document.querySelector(".filtered-div");
+    if (existingfilter) {
+      reorderAndReappend();
+      toDoLists.removeChild(existingfilter);
+    }
+
+    const filteredDiv = createDiv(`filtered-div`);
     for (let i = 0; i < descriptions.length; i++) {
       const multi = descriptions[i].querySelector("select");
       const options = multi.querySelectorAll("option");
@@ -27,26 +36,58 @@ function FolderViewContent(e) {
         ) {
           filteredDiv.appendChild(activeToDos[i]);
           filteredDiv.appendChild(descriptionWrappers[i]);
-          allToDoItems.style.maxHeight = "0";
-          allToDoItems.style.visibility = "hidden";
         }
       }
+      allToDoItems.style.maxHeight = "0";
+      allToDoItems.style.visibility = "hidden";
     }
+
     return filteredDiv;
   }
+  //NEED TO FIGURE OUT HOW TO REORDER BY DATA-ITEM
   if (selectedButton.classList.contains("all-items")) {
-    for (let a = 0; a < activeToDos.length; a++) {
-      allToDoItems.appendChild(activeToDos[a]);
-      allToDoItems.appendChild(descriptionWrappers[a]);
-    }
-    const removefilter = document.querySelector(".filtered-div");
-    toDoLists.removeChild(removefilter);
+    reorderAndReappend();
+
     allToDoItems.style.removeProperty("max-height");
     allToDoItems.style.removeProperty("visibility");
+
+    removeFilter();
+
     return allToDoItems;
   }
 
   console.log(selectedButton.textContent);
+}
+
+function reorderAndReappend() {
+  const activeToDos = document.querySelectorAll(".to-do-item");
+  const allToDoItems = document.querySelector(".to-do-list");
+  const descriptionWrappers = document.querySelectorAll(".description-wrapper");
+  const allItems = [];
+  for (let a = 0; a < activeToDos.length; a++) {
+    allItems.push({
+      todo: activeToDos[a],
+      descrption: descriptionWrappers[a],
+      order: parseInt(activeToDos[a].getAttribute("data-item")),
+    });
+  }
+
+  allItems.sort((a, b) => a.order - b.order);
+
+  allItems.forEach((item) => {
+    allToDoItems.appendChild(item.todo);
+    allToDoItems.appendChild(item.descrption);
+  });
+}
+
+function removeFilter() {
+  const toDoLists = document.querySelector(".all-to-dos");
+  const removefilter = document.querySelector(".filtered-div");
+  if (removefilter) {
+    toDoLists.removeChild(removefilter);
+  } else {
+    return;
+  }
 }
 
 export function renderFolderView(e) {
