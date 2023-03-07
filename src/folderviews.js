@@ -17,6 +17,7 @@ function FolderViewContent(e) {
     console.log("do nothing");
     return;
   }
+  //NEED TO ORDER BY DATE THEN BY DATA ITEM WHEN CREATING THE NEW FILTERED DIV
   if (selectedButton.classList.contains("new-folder")) {
     const existingfilter = document.querySelector(".filtered-div");
     if (existingfilter) {
@@ -44,7 +45,7 @@ function FolderViewContent(e) {
 
     return filteredDiv;
   }
-  //NEED TO FIGURE OUT HOW TO REORDER BY DATA-ITEM
+
   if (selectedButton.classList.contains("all-items")) {
     reorderAndReappend();
 
