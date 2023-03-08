@@ -6,6 +6,7 @@ import {
   descriptionOptions,
   updateDescriptionMulti,
 } from "./multiselect";
+import { storeInLocalStorage } from "./localstorage";
 
 export function createDiv(divClass) {
   const div = document.createElement("div");
@@ -58,6 +59,7 @@ export function createFolder(e) {
     customDiv.appendChild(removeCustom);
     const selector = document.querySelector(".to-do-buttons");
     selector.appendChild(customDiv);
+
     updateOptionList(folderName.value.toUpperCase());
     updateDescriptionMulti();
     closeModal(e);
@@ -386,7 +388,6 @@ function markComplete(e) {
     });
   } else {
     toDoNameAndDate.forEach((element) => {
-      // element.style.textDecoration = "none";
       element.style.removeProperty("text-decoration");
     });
   }
