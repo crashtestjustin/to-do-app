@@ -20,6 +20,9 @@ function pushToDoList(title, dueDate, dueTime, description, folders) {
   toDoList.push({ title, dueDate, dueTime, description, folders });
 }
 
+//exporting the toDoList string to use in multiselect functions for toDo descriptions
+export const toDoObjects = toDoList;
+
 //reformatting default date format into mm/dd/yyyy string
 export function reformatDate(inputDate) {
   const inputDateStr = inputDate;
@@ -31,5 +34,12 @@ export function reformatDate(inputDate) {
   return outputDateStr;
 }
 
-//exporting the toDoList string to use in multiselect functions for toDo descriptions
-export const toDoObjects = toDoList;
+export function createFullDate(inputDate) {
+  const inputDateStr = inputDate;
+  const expectedFormat = "yyyy-MM-dd HH:mm";
+  const outputFormat = "MM/dd/yyyy HH:mm:ss";
+
+  const parsedDate = parse(inputDateStr, expectedFormat, new Date());
+  const fullDate = format(parsedDate, outputFormat);
+  return fullDate;
+}

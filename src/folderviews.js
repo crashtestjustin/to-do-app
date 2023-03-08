@@ -1,5 +1,9 @@
 //generate folder views when clicking on the folder buttons
-
+import {
+  isDueNextWeekCheck,
+  isDueThisWeekCheck,
+  isDueTodayCheck,
+} from "./datecompare";
 import { createDiv } from "./Domfunctionality";
 
 function FolderViewContent(e) {
@@ -11,6 +15,89 @@ function FolderViewContent(e) {
   const descriptions = document.querySelectorAll(".to-do-details");
 
   //NEED TO ADD FILTERS FOR DATE-BASED FILTERING
+  if (selectedButton.textContent === "TODAY") {
+    const existingfilter = document.querySelector(".filtered-div");
+    const date = document.querySelectorAll("#description-date");
+    const time = document.querySelectorAll("#description-time");
+    if (existingfilter) {
+      reorderAndReappend();
+      toDoLists.removeChild(existingfilter);
+    }
+
+    const filteredDiv = createDiv(`filtered-div`);
+    for (let i = 0; i < date.length; i++) {
+      var dateString;
+      if (time[i].value === "") {
+        dateString = `${date[i].value.toString()} 00:00`;
+      } else {
+        dateString = `${date[i].value.toString()} ${time[i].value.toString()}`;
+      }
+      const isDueToday = isDueTodayCheck(dateString);
+      if (isDueToday) {
+        filteredDiv.appendChild(activeToDos[i]);
+        filteredDiv.appendChild(descriptionWrappers[i]);
+      }
+      allToDoItems.style.maxHeight = "0";
+      allToDoItems.style.visibility = "hidden";
+    }
+    return filteredDiv;
+  }
+
+  if (selectedButton.textContent === "THIS WEEK") {
+    const existingfilter = document.querySelector(".filtered-div");
+    const date = document.querySelectorAll("#description-date");
+    const time = document.querySelectorAll("#description-time");
+    if (existingfilter) {
+      reorderAndReappend();
+      toDoLists.removeChild(existingfilter);
+    }
+
+    const filteredDiv = createDiv(`filtered-div`);
+    for (let i = 0; i < date.length; i++) {
+      var dateString;
+      if (time[i].value === "") {
+        dateString = `${date[i].value.toString()} 00:00`;
+      } else {
+        dateString = `${date[i].value.toString()} ${time[i].value.toString()}`;
+      }
+      const isDueThisWeek = isDueThisWeekCheck(dateString);
+      if (isDueThisWeek) {
+        filteredDiv.appendChild(activeToDos[i]);
+        filteredDiv.appendChild(descriptionWrappers[i]);
+      }
+      allToDoItems.style.maxHeight = "0";
+      allToDoItems.style.visibility = "hidden";
+    }
+    return filteredDiv;
+  }
+
+  if (selectedButton.textContent === "NEXT WEEK") {
+    const existingfilter = document.querySelector(".filtered-div");
+    const date = document.querySelectorAll("#description-date");
+    const time = document.querySelectorAll("#description-time");
+    if (existingfilter) {
+      reorderAndReappend();
+      toDoLists.removeChild(existingfilter);
+    }
+
+    const filteredDiv = createDiv(`filtered-div`);
+    for (let i = 0; i < date.length; i++) {
+      var dateString;
+      if (time[i].value === "") {
+        dateString = `${date[i].value.toString()} 00:00`;
+      } else {
+        dateString = `${date[i].value.toString()} ${time[i].value.toString()}`;
+      }
+      const isDueNextWeek = isDueNextWeekCheck(dateString);
+      if (isDueNextWeek) {
+        filteredDiv.appendChild(activeToDos[i]);
+        filteredDiv.appendChild(descriptionWrappers[i]);
+      }
+      allToDoItems.style.maxHeight = "0";
+      allToDoItems.style.visibility = "hidden";
+    }
+    return filteredDiv;
+  }
 
   if (selectedButton.textContent === "FOLDERS") {
     //NEED TO FIX ERROR HERE
@@ -56,8 +143,6 @@ function FolderViewContent(e) {
 
     return allToDoItems;
   }
-
-  console.log(selectedButton.textContent);
 }
 
 function reorderAndReappend() {
