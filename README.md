@@ -4,11 +4,12 @@
 
 need to continue by setting up functionality for to dos:
 
-- date functionality warning if toDo is overdue (localstorage API needed)
-- create folder views - CREATE DATE BASED FILTERS AND ORDER THE FILTERS BY DATE THEN BY DATA ITEM
+- date functionality warning if toDo is overdue
+- localstorage API for toDos adn custom folders
+- create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM
 - expand/collapse capability for custom folders
 - styling updates for remaining buttons and text areas and forms + expand/collapse dynamic icons
-- confirm folder item is being removed from object arrays when removed from navigation pane
+- removed folder array item from folder object array when removed from navigation pane
 
 Add on
 

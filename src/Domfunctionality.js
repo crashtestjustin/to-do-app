@@ -6,7 +6,6 @@ import {
   descriptionOptions,
   updateDescriptionMulti,
 } from "./multiselect";
-import { storeInLocalStorage } from "./localstorage";
 
 export function createDiv(divClass) {
   const div = document.createElement("div");
