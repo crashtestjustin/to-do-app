@@ -34,12 +34,12 @@ export function reformatDate(inputDate) {
   return outputDateStr;
 }
 
-export function createFullDate(inputDate) {
-  const inputDateStr = inputDate;
-  const expectedFormat = "yyyy-MM-dd HH:mm";
-  const outputFormat = "MM/dd/yyyy HH:mm:ss";
+// export function createFullDate(inputDate) {
+//   const inputDateStr = inputDate;
+//   const expectedFormat = "yyyy-MM-dd HH:mm";
+//   const outputFormat = "MM/dd/yyyy HH:mm:ss";
 
-  const parsedDate = parse(inputDateStr, expectedFormat, new Date());
-  const fullDate = format(parsedDate, outputFormat);
-  return fullDate;
-}
+//   const parsedDate = parse(inputDateStr, expectedFormat, new Date());
+//   const fullDate = format(parsedDate, outputFormat);
+//   return fullDate;
+// }
