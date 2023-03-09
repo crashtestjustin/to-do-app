@@ -6,6 +6,7 @@ import {
   descriptionOptions,
   updateDescriptionMulti,
 } from "./multiselect";
+import { checkPastDue } from "./datecompare";
 
 export function createDiv(divClass) {
   const div = document.createElement("div");
@@ -200,6 +201,7 @@ export function appendToDo(e) {
   section.appendChild(newToDo);
   section.appendChild(newDetails);
   checkForToDos();
+  checkPastDue();
 
   return section;
 }
@@ -372,6 +374,7 @@ function toggleEditing(e) {
     }
     multiSelect.disabled = true;
     e.target.textContent = "EDIT";
+    checkPastDue();
   }
 }
 

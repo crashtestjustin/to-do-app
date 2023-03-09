@@ -4,6 +4,7 @@ import { createMain } from "./mainContent.js";
 import { createDiv } from "./Domfunctionality.js";
 import { folderForm } from "./navigation.js";
 import { toDoForm } from "./mainContent.js";
+import { checkPastDue } from "./datecompare.js";
 
 const main = document.getElementById("content");
 
@@ -33,3 +34,5 @@ function application() {
 }
 
 main.appendChild(application());
+
+setInterval(checkPastDue, 10000);
