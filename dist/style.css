@@ -312,6 +312,11 @@ button.remove {
   height: 25px;
 }
 
+.overdue-to-do {
+  background-color: rgba(255, 63, 63, 0.686);
+  color: #fdbe28;
+}
+
 .description-wrapper {
   overflow: hidden;
   max-height: 0;
