@@ -99,11 +99,11 @@ function FolderViewContent(e) {
     return filteredDiv;
   }
 
-  if (selectedButton.textContent === "FOLDERS") {
-    //NEED TO FIX ERROR HERE
-    console.log("do nothing");
-    return;
-  }
+  //   if (selectedButton.textContent === "FOLDERS") {
+  //     console.log("do nothing");
+  //     return;
+  //   }
+
   //NEED TO ORDER BY DATE THEN BY DATA ITEM WHEN CREATING THE NEW FILTERED DIV
   if (selectedButton.classList.contains("new-folder")) {
     const existingfilter = document.querySelector(".filtered-div");
@@ -178,5 +178,14 @@ function removeFilter() {
 
 export function renderFolderView(e) {
   const toDoLists = document.querySelector(".all-to-dos");
-  toDoLists.insertBefore(FolderViewContent(e), toDoLists.firstChild);
+  const selectedButton = e.target;
+  if (
+    (selectedButton.textContent === "FOLDERS" &&
+      selectedButton.classList.contains("main-cat")) ||
+    selectedButton.textContent === "x"
+  ) {
+    return;
+  } else {
+    toDoLists.insertBefore(FolderViewContent(e), toDoLists.firstChild);
+  }
 }
