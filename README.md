@@ -4,11 +4,10 @@
 
 need to continue by setting up functionality for to dos:
 
-- fix errors on clicking "FOLDERS" button and on x's for custom folders
-- localstorage API for toDos adn custom folders
-- create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM
+- localstorage API for toDos and custom folders
 - expand/collapse capability for custom folders
-- styling updates for remaining buttons and text areas and forms + expand/collapse dynamic icons
+- create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM
+- styling updates for remaining buttons and text areas and forms + expand/collapse icons on page elements
 - removed folder array item from folder object array when removed from navigation pane
 
 Add on
