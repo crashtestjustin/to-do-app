@@ -5,6 +5,7 @@
 need to continue by setting up functionality for to dos:
 
 - date functionality warning if toDo is overdue
+- fix errors on clicking "FOLDERS" button and on x's for custom folders
 - localstorage API for toDos adn custom folders
 - create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM
 - expand/collapse capability for custom folders
