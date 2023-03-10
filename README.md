@@ -5,8 +5,10 @@
 need to continue by setting up functionality for to dos:
 
 - localstorage API for toDos and custom folders
+  - customFolder needs to have on page load element creation
+  - toDos: need to create the save to local storage and remove from local storage elements & the page load create elements
 - expand/collapse capability for custom folders
-- create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM
+- create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM???
 - styling updates for remaining buttons and text areas and forms + expand/collapse icons on page elements
 - removed folder array item from folder object array when removed from navigation pane
 
