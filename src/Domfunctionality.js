@@ -7,6 +7,10 @@ import {
   updateDescriptionMulti,
 } from "./multiselect";
 import { checkPastDue } from "./datecompare";
+import {
+  saveFolderToLocalStorage,
+  removeCustomFolderFromLocalStorage,
+} from "./localstorage";
 
 export function createDiv(divClass) {
   const div = document.createElement("div");
@@ -49,6 +53,9 @@ export function createFolder(e) {
     customDiv.classList = "custom-div";
     customDiv.dataset.index = folderIndex;
     const removeCustom = createButton("remove", "x");
+    //save to local storage
+    saveFolderToLocalStorage(folderName.value.toUpperCase());
+    //end save
     folderIndex++;
 
     removeCustom.addEventListener("click", (e) => {
@@ -59,7 +66,6 @@ export function createFolder(e) {
     customDiv.appendChild(removeCustom);
     const selector = document.querySelector(".to-do-buttons");
     selector.appendChild(customDiv);
-
     updateOptionList(folderName.value.toUpperCase());
     updateDescriptionMulti();
     closeModal(e);
@@ -79,6 +85,8 @@ function removeFolder(e) {
     const xNum = button.getAttribute("data-index");
     if (xNum === i) {
       button.remove();
+      const matchedFolder = customFolderDiv.querySelector(".new-folder");
+      removeCustomFolderFromLocalStorage(matchedFolder.textContent);
     }
   });
   reindexCustomFolders();
