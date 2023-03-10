@@ -53,9 +53,7 @@ export function createFolder(e) {
     customDiv.classList = "custom-div";
     customDiv.dataset.index = folderIndex;
     const removeCustom = createButton("remove", "x");
-    //save to local storage
     saveFolderToLocalStorage(folderName.value.toUpperCase());
-    //end save
     folderIndex++;
 
     removeCustom.addEventListener("click", (e) => {
