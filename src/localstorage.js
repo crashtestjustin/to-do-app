@@ -7,10 +7,6 @@ export function saveFolderToLocalStorage(folderName) {
   //   localStorage.setItem(folderName), folderName);
 }
 
-export function removeCustomFolderFromLocalStorage(key) {
-  localStorage.removeItem(key);
-}
-
 function saveToLocalStorage() {
   //saving to do and descriptions to local storage
 }
@@ -38,7 +34,7 @@ export function loadFolderOnPageLoad() {
 
 let folderIndex = 0;
 function createFolder(folder) {
-  const folderName = folder;
+  //   const folderName = folder;
   const newFolder = createButton("new-folder sub-cat", folder);
   const customDiv = document.createElement("div");
   customDiv.classList = "custom-div";

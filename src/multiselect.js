@@ -56,8 +56,8 @@ export function removeMultiselectOption(arrayIndex) {
 //exported constant that is used to obtain the otions array for functions in the other modules
 export const descriptionOptions = options;
 
+//selects the correct options in each description multiselect
 //maintains previously selected multiselect options when new folders are added and removed
-//this maintains memory of folder selection if it is re-added
 export function updateDescriptionMulti() {
   const descMuiltiSelect = document.querySelectorAll("#current-folders");
   for (let i = 0; i < descMuiltiSelect.length; i++) {
