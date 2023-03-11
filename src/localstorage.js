@@ -3,7 +3,8 @@ import { updateOptionList, updateDescriptionMulti } from "./multiselect";
 
 //local storage functionality
 export function saveFolderToLocalStorage(folderName) {
-  localStorage.setItem(folderName, folderName);
+  localStorage.setItem("FOLDERS", folderName);
+  //   localStorage.setItem(folderName), folderName);
 }
 
 export function removeCustomFolderFromLocalStorage(key) {
@@ -18,19 +19,22 @@ function removeFromLocalStorage() {
   //removing to do and descriptions to local storage
 }
 
-//need to load folder local storage on page load
+var folderList = [];
+export const theFolderList = folderList;
 
 export function loadFolderOnPageLoad() {
-  for (let i = 0; i < localStorage.length; i++) {
-    const folderKey = localStorage.key(i);
-    console.log(localStorage.getItem(folderKey));
-    createFolder(localStorage.getItem(folderKey));
-    // if ()
-    // createFolder();
+  const stringFolderList = localStorage.key("FOLDERS");
+  const parsedFolderList = JSON.parse(localStorage.getItem(stringFolderList));
+  if (parsedFolderList !== null) {
+    theFolderList.length = 0;
+    for (let i = 0; i < parsedFolderList.length; i++) {
+      theFolderList.push(parsedFolderList[i]);
+      createFolder(parsedFolderList[i]);
+    }
   }
 }
 
-//need to load to dos and descriptions on page load
+//create folders on page load
 
 let folderIndex = 0;
 function createFolder(folder) {

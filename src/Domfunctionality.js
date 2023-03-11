@@ -7,10 +7,7 @@ import {
   updateDescriptionMulti,
 } from "./multiselect";
 import { checkPastDue } from "./datecompare";
-import {
-  saveFolderToLocalStorage,
-  removeCustomFolderFromLocalStorage,
-} from "./localstorage";
+import { saveFolderToLocalStorage, theFolderList } from "./localstorage";
 
 export function createDiv(divClass) {
   const div = document.createElement("div");
@@ -38,9 +35,9 @@ export function createCheckbox() {
 //custom folder creation
 let folderIndex = 0;
 export function createFolder(e) {
+  const existingFolders = document.querySelectorAll(".custom-div");
   const folderName = document.querySelector("#name-input");
   const warning = document.querySelector(".warning");
-  const existingFolders = document.querySelectorAll(".custom-div");
   if (folderName.value.length < 1) {
     warning.classList = "warning display-warning";
     folderName.classList = "folder-name-input input-error";
@@ -52,21 +49,22 @@ export function createFolder(e) {
     );
     const customDiv = document.createElement("div");
     customDiv.classList = "custom-div";
-
-    if (existingFolders.length > 1) {
+    if (existingFolders.length >= 1) {
       const lastItem = existingFolders[existingFolders.length - 1];
       customDiv.dataset.index = parseInt(lastItem.dataset.index) + 1;
     } else {
       customDiv.dataset.index = folderIndex;
     }
-
     const removeCustom = createButton("remove", "x");
-    saveFolderToLocalStorage(folderName.value.toUpperCase());
     folderIndex++;
 
     removeCustom.addEventListener("click", (e) => {
       removeFolder(e);
     });
+
+    theFolderList.push(folderName.value.toUpperCase());
+    const folderSave = JSON.stringify(theFolderList);
+    saveFolderToLocalStorage(folderSave);
 
     customDiv.appendChild(newFolder);
     customDiv.appendChild(removeCustom);
@@ -91,8 +89,9 @@ export function removeFolder(e) {
     const xNum = button.getAttribute("data-index");
     if (xNum === i) {
       button.remove();
-      const matchedFolder = customFolderDiv.querySelector(".new-folder");
-      removeCustomFolderFromLocalStorage(matchedFolder.textContent);
+      theFolderList.splice(i, 1);
+      const folderSave = JSON.stringify(theFolderList);
+      saveFolderToLocalStorage(folderSave);
     }
   });
   reindexCustomFolders();
