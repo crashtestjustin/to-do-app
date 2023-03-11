@@ -1,19 +1,17 @@
 import { createButton, removeFolder } from "./Domfunctionality";
 import { updateOptionList, updateDescriptionMulti } from "./multiselect";
 
-//local storage functionality
+//local storage functionality for fodlers
 export function saveFolderToLocalStorage(folderName) {
   localStorage.setItem("FOLDERS", folderName);
-  //   localStorage.setItem(folderName), folderName);
 }
 
-function saveToLocalStorage() {
-  //saving to do and descriptions to local storage
+//local storage setting for toDo objects
+export function saveToLocalStorage(toDoObject) {
+  localStorage.setItem("TODOS", toDoObject);
 }
 
-function removeFromLocalStorage() {
-  //removing to do and descriptions to local storage
-}
+//creating folders on page load
 
 var folderList = [];
 export const theFolderList = folderList;
@@ -54,3 +52,5 @@ function createFolder(folder) {
   updateDescriptionMulti();
   return newFolder;
 }
+
+//create toDos on page load

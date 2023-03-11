@@ -5,6 +5,7 @@ import { displayToDoModal } from "./Domfunctionality.js";
 import { submitToDoModal } from "./Domfunctionality.js";
 import { toDo, toDoObjects } from "./createtodo.js";
 import { createMultiSelect, updateOptionList } from "./multiselect.js";
+import { saveToLocalStorage, theToDoList } from "./localstorage.js";
 
 export function createMain() {
   const main = createDiv("main-content");
@@ -124,6 +125,10 @@ export function toDoForm() {
         values
       );
       submitToDoModal(toDoOne);
+
+      const stringifiedObjects = JSON.stringify(toDoObjects);
+      saveToLocalStorage(stringifiedObjects);
+
       closeModal(e);
       console.log(toDoObjects);
       warning.classList = "to-do-warning";

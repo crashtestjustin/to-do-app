@@ -7,7 +7,12 @@ import {
   updateDescriptionMulti,
 } from "./multiselect";
 import { checkPastDue } from "./datecompare";
-import { saveFolderToLocalStorage, theFolderList } from "./localstorage";
+import {
+  saveFolderToLocalStorage,
+  theFolderList,
+  theToDoList,
+  saveToLocalStorage,
+} from "./localstorage";
 
 export function createDiv(divClass) {
   const div = document.createElement("div");
@@ -233,6 +238,8 @@ export function removeToDo(e) {
   toDoItem.remove();
   e.stopPropagation();
   toDoObjects.splice(i, 1);
+  const updatedToDoList = JSON.stringify(toDoObjects);
+  saveToLocalStorage(updatedToDoList);
   reIndexToDos();
   checkForToDos();
 }

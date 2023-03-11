@@ -1,6 +1,9 @@
 import { format, parse } from "date-fns";
 
 var toDoList = [];
+//exporting the toDoList string to use in multiselect functions for toDo descriptions and saving
+//to local storage
+export const toDoObjects = toDoList;
 
 //creating main object
 export const toDo = (title, dueDate, dueTime, description, folders) => {
@@ -19,9 +22,6 @@ export const toDo = (title, dueDate, dueTime, description, folders) => {
 function pushToDoList(title, dueDate, dueTime, description, folders) {
   toDoList.push({ title, dueDate, dueTime, description, folders });
 }
-
-//exporting the toDoList string to use in multiselect functions for toDo descriptions
-export const toDoObjects = toDoList;
 
 //reformatting default date format into mm/dd/yyyy string
 export function reformatDate(inputDate) {
