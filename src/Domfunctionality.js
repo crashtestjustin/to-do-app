@@ -40,6 +40,7 @@ let folderIndex = 0;
 export function createFolder(e) {
   const folderName = document.querySelector("#name-input");
   const warning = document.querySelector(".warning");
+  const existingFolders = document.querySelectorAll(".custom-div");
   if (folderName.value.length < 1) {
     warning.classList = "warning display-warning";
     folderName.classList = "folder-name-input input-error";
@@ -51,7 +52,14 @@ export function createFolder(e) {
     );
     const customDiv = document.createElement("div");
     customDiv.classList = "custom-div";
-    customDiv.dataset.index = folderIndex;
+
+    if (existingFolders.length > 1) {
+      const lastItem = existingFolders[existingFolders.length - 1];
+      customDiv.dataset.index = parseInt(lastItem.dataset.index) + 1;
+    } else {
+      customDiv.dataset.index = folderIndex;
+    }
+
     const removeCustom = createButton("remove", "x");
     saveFolderToLocalStorage(folderName.value.toUpperCase());
     folderIndex++;
@@ -75,7 +83,7 @@ export function createFolder(e) {
 }
 
 //removing custom folders
-function removeFolder(e) {
+export function removeFolder(e) {
   const customFolderDiv = e.target.closest(".custom-div");
   const removeButtons = document.querySelectorAll(".custom-div");
   let i = customFolderDiv.dataset.index;
