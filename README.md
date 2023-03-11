@@ -4,8 +4,7 @@
 
 need to continue by setting up functionality for to dos:
 
-- localstorage API for toDos and custom folders
-  - customFolder needs to have on page load element creation
+- localstorage API for toDos
   - toDos: need to create the save to local storage and remove from local storage elements & the page load create elements
 - expand/collapse capability for custom folders
 - create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM???
