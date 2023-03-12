@@ -4,8 +4,6 @@
 
 need to continue by setting up functionality for to dos:
 
-- localstorage API for toDos
-  - toDos: need to add function to create saved local storage to do objects and descriptions on the DOM on page load
 - expand/collapse capability for custom folders
 - create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM???
 - styling updates for remaining buttons and text areas and forms + expand/collapse icons on page elements
