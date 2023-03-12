@@ -5,10 +5,9 @@
 need to continue by setting up functionality for to dos:
 
 - expand/collapse capability for custom folders
-- create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM???
 - styling updates for remaining buttons and text areas and forms + expand/collapse icons on page elements
-- remove local storage key if the values are empty
 - removed folder array item from folder object array when removed from navigation pane
+- create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM???
 
 Add on
 
