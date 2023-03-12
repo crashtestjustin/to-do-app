@@ -40,8 +40,6 @@ var folderList = [];
 export const theFolderList = folderList;
 
 export function loadFolderOnPageLoad() {
-  // const stringFolderList = localStorage.key("FOLDERS");
-  // const parsedFolderList = JSON.parse(localStorage.getItem(stringFolderList));
   const parsedFolderList = JSON.parse(localStorage.getItem("FOLDERS"));
   if (parsedFolderList !== null) {
     theFolderList.length = 0;
@@ -73,7 +71,6 @@ function createFolder(folder) {
   selector.appendChild(customDiv);
   updateOptionList(folder);
   updateDescriptionMulti();
-  // return newFolder;
 }
 
 //create toDos on page load
