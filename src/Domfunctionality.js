@@ -313,7 +313,7 @@ export function closeModal(e) {
 }
 
 //expand to do sections
-function expandSection(e) {
+export function expandSection(e) {
   const toDoItem = e.target.closest(".to-do-item");
   const collapseDesc = document.querySelectorAll(".description-wrapper");
   let i = toDoItem.dataset.item;
@@ -349,7 +349,7 @@ function expandSection(e) {
 }
 
 //enabling and saving the edits to a to Do
-function toggleEditing(e) {
+export function toggleEditing(e) {
   const selectedDesc = e.target.closest(".description-wrapper");
   const childInputs = selectedDesc.querySelectorAll("input");
   const dBox = selectedDesc.querySelectorAll("textarea");
@@ -399,7 +399,7 @@ function toggleEditing(e) {
 }
 
 //marking the to do as completed
-function markComplete(e) {
+export function markComplete(e) {
   const selectCheckBox = e.target;
   const toDoItem = e.target.closest(".to-do-item");
   const toDoNameAndDate = toDoItem.querySelectorAll("div");
@@ -416,7 +416,7 @@ function markComplete(e) {
 }
 
 //check for toDos tp enable expand button visibility
-function checkForToDos() {
+export function checkForToDos() {
   const expandButton = document.querySelector(".expand-all");
   const toDoItems = document.querySelector(".to-do-item");
   if (toDoItems) {

@@ -5,7 +5,7 @@ import { createDiv } from "./Domfunctionality.js";
 import { folderForm } from "./navigation.js";
 import { toDoForm } from "./mainContent.js";
 import { checkPastDue } from "./datecompare.js";
-import { loadFolderOnPageLoad } from "./localstorage.js";
+import { loadFolderOnPageLoad, loadToDosOnPageLoad } from "./localstorage.js";
 
 const main = document.getElementById("content");
 
@@ -36,4 +36,5 @@ function application() {
 
 main.appendChild(application());
 loadFolderOnPageLoad();
+loadToDosOnPageLoad();
 setInterval(checkPastDue, 10000);

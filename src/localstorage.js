@@ -1,5 +1,23 @@
-import { createButton, removeFolder } from "./Domfunctionality";
-import { updateOptionList, updateDescriptionMulti } from "./multiselect";
+import {
+  createButton,
+  removeFolder,
+  createDiv,
+  createCheckbox,
+  checkForToDos,
+  expandSection,
+  markComplete,
+  removeToDo,
+  toggleEditing,
+} from "./Domfunctionality";
+import {
+  updateOptionList,
+  updateDescriptionMulti,
+  createMultiSelect,
+} from "./multiselect";
+import { toDoObjects } from "./createtodo";
+import { reformatDate } from "./createtodo";
+import { descriptionOptions } from "./multiselect";
+import { checkPastDue } from "./datecompare";
 
 //local storage functionality for fodlers
 export function saveFolderToLocalStorage(folderName) {
@@ -54,3 +72,136 @@ function createFolder(folder) {
 }
 
 //create toDos on page load
+
+export function loadToDosOnPageLoad() {
+  const parsedToDoList = JSON.parse(localStorage.getItem("TODOS"));
+  if (parsedToDoList !== null) {
+    console.log(toDoObjects);
+    toDoObjects.length = 0;
+    for (let i = 0; i < parsedToDoList.length; i++) {
+      toDoObjects.push(parsedToDoList[i]);
+      //   createToDo(parsedToDoList[i]);
+      //   toDetails(parsedToDoList[i]);
+      appendToDo(parsedToDoList[i]);
+    }
+  }
+}
+
+function appendToDo(e) {
+  const section = document.querySelector(".to-do-list");
+  const newToDo = createToDo(e);
+  const newDetails = toDetails(e);
+  section.appendChild(newToDo);
+  section.appendChild(newDetails);
+  checkForToDos();
+  checkPastDue();
+
+  return section;
+}
+
+let item = 0;
+function createToDo(toDoObject) {
+  const section = createDiv("to-do-item");
+  section.dataset.item = item;
+  section.style.borderBottomLeftRadius = "var(--standard-border-radius)";
+  section.style.borderBottomRightRadius = "var(--standard-border-radius)";
+  item++;
+
+  section.addEventListener("click", (e) => {
+    expandSection(e);
+  });
+
+  const toDoTitle = createDiv("");
+  toDoTitle.textContent = toDoObject.title;
+
+  const uiDueDate = createDiv("");
+  uiDueDate.classList = "due-date-display";
+  if (toDoObject.dueDate === "") {
+    uiDueDate.textContent = "";
+  } else {
+    const formattedDate = reformatDate(toDoObject.dueDate);
+    uiDueDate.textContent = formattedDate;
+  }
+
+  const checkbox = createCheckbox();
+  checkbox.addEventListener("click", (e) => {
+    markComplete(e);
+  });
+
+  const deleteButton = createButton("delete", "🗑️");
+  deleteButton.addEventListener("click", (e) => {
+    removeToDo(e);
+  });
+
+  section.appendChild(toDoTitle);
+  section.appendChild(uiDueDate);
+  section.appendChild(checkbox);
+  section.appendChild(deleteButton);
+
+  return section;
+}
+
+//details section load
+
+let deets = 0;
+export function toDetails(toDoObject) {
+  const sectionWrap = createDiv("description-wrapper collapsed-desc");
+  sectionWrap.dataset.item = deets;
+  sectionWrap.style.maxHeight = "0";
+  deets++;
+
+  const section = createDiv("to-do-details");
+
+  const expDueDate = document.createElement("input");
+  expDueDate.type = "date";
+  expDueDate.id = "description-date";
+  expDueDate.value = toDoObject.dueDate;
+  expDueDate.disabled = true;
+  section.appendChild(expDueDate);
+
+  const timeDue = document.createElement("input");
+  timeDue.type = "time";
+  timeDue.id = "description-time";
+  timeDue.value = toDoObject.dueTime;
+  timeDue.disabled = true;
+  section.appendChild(timeDue);
+
+  const editBtn = createButton("edit-button", "EDIT");
+  section.appendChild(editBtn);
+  editBtn.addEventListener("click", (e) => {
+    toggleEditing(e);
+  });
+
+  const wrapper = createDiv("text-area-wrapper");
+  section.appendChild(wrapper);
+
+  const descBox = document.createElement("textarea");
+  descBox.textContent = toDoObject.description;
+  descBox.id = "description-description";
+  descBox.placeholder = "description...";
+  descBox.disabled = true;
+  wrapper.appendChild(descBox);
+
+  const folders = createMultiSelect();
+  folders.disabled = true;
+  folders.id = "current-folders";
+  folders.classList = "description-multi";
+  descriptionOptions.forEach((option) => {
+    const optionEl = document.createElement("option");
+    optionEl.value = option;
+    optionEl.textContent = option;
+    optionEl.classList = "d-folder-option";
+    toDoObject.folders.forEach((selectedFolder) => {
+      if (selectedFolder === option) {
+        optionEl.selected = true;
+      }
+    });
+    folders.appendChild(optionEl);
+  });
+
+  section.appendChild(folders);
+
+  sectionWrap.appendChild(section);
+
+  return sectionWrap;
+}
