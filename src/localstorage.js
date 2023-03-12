@@ -19,6 +19,11 @@ import { reformatDate } from "./createtodo";
 import { descriptionOptions } from "./multiselect";
 import { checkPastDue } from "./datecompare";
 
+//remove item from local storage
+export function removeLocalStorageKey(key) {
+  localStorage.removeItem(key);
+}
+
 //local storage functionality for fodlers
 export function saveFolderToLocalStorage(folderName) {
   localStorage.setItem("FOLDERS", folderName);
@@ -35,8 +40,9 @@ var folderList = [];
 export const theFolderList = folderList;
 
 export function loadFolderOnPageLoad() {
-  const stringFolderList = localStorage.key("FOLDERS");
-  const parsedFolderList = JSON.parse(localStorage.getItem(stringFolderList));
+  // const stringFolderList = localStorage.key("FOLDERS");
+  // const parsedFolderList = JSON.parse(localStorage.getItem(stringFolderList));
+  const parsedFolderList = JSON.parse(localStorage.getItem("FOLDERS"));
   if (parsedFolderList !== null) {
     theFolderList.length = 0;
     for (let i = 0; i < parsedFolderList.length; i++) {
@@ -50,7 +56,6 @@ export function loadFolderOnPageLoad() {
 
 let folderIndex = 0;
 function createFolder(folder) {
-  //   const folderName = folder;
   const newFolder = createButton("new-folder sub-cat", folder);
   const customDiv = document.createElement("div");
   customDiv.classList = "custom-div";
@@ -68,7 +73,7 @@ function createFolder(folder) {
   selector.appendChild(customDiv);
   updateOptionList(folder);
   updateDescriptionMulti();
-  return newFolder;
+  // return newFolder;
 }
 
 //create toDos on page load
@@ -76,7 +81,6 @@ function createFolder(folder) {
 export function loadToDosOnPageLoad() {
   const parsedToDoList = JSON.parse(localStorage.getItem("TODOS"));
   if (parsedToDoList !== null) {
-    console.log(toDoObjects);
     toDoObjects.length = 0;
     for (let i = 0; i < parsedToDoList.length; i++) {
       toDoObjects.push(parsedToDoList[i]);

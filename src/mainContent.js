@@ -130,7 +130,6 @@ export function toDoForm() {
       saveToLocalStorage(stringifiedObjects);
 
       closeModal(e);
-      console.log(toDoObjects);
       warning.classList = "to-do-warning";
       toDoName.classList = "todo-input";
       toDoLabel.removeAttribute("class");

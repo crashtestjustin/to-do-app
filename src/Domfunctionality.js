@@ -10,8 +10,8 @@ import { checkPastDue } from "./datecompare";
 import {
   saveFolderToLocalStorage,
   theFolderList,
-  theToDoList,
   saveToLocalStorage,
+  removeLocalStorageKey,
 } from "./localstorage";
 
 export function createDiv(divClass) {
@@ -95,8 +95,12 @@ export function removeFolder(e) {
     if (xNum === i) {
       button.remove();
       theFolderList.splice(i, 1);
-      const folderSave = JSON.stringify(theFolderList);
-      saveFolderToLocalStorage(folderSave);
+      if (theFolderList.length === 0) {
+        removeLocalStorageKey("FOLDERS");
+      } else {
+        const folderSave = JSON.stringify(theFolderList);
+        saveFolderToLocalStorage(folderSave);
+      }
     }
   });
   reindexCustomFolders();
@@ -118,7 +122,7 @@ export function createToDo(e) {
   });
 
   const toDoTitle = createDiv("");
-  toDoTitle.textContent = e.title.toUpperCase();
+  toDoTitle.textContent = e.title;
 
   const uiDueDate = createDiv("");
   uiDueDate.classList = "due-date-display";
@@ -238,8 +242,12 @@ export function removeToDo(e) {
   toDoItem.remove();
   e.stopPropagation();
   toDoObjects.splice(i, 1);
-  const updatedToDoList = JSON.stringify(toDoObjects);
-  saveToLocalStorage(updatedToDoList);
+  if (toDoObjects.length === 0) {
+    removeLocalStorageKey("TODOS");
+  } else {
+    const updatedToDoList = JSON.stringify(toDoObjects);
+    saveToLocalStorage(updatedToDoList);
+  }
   reIndexToDos();
   checkForToDos();
 }

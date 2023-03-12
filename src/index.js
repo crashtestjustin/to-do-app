@@ -35,6 +35,6 @@ function application() {
 }
 
 main.appendChild(application());
-loadFolderOnPageLoad();
 loadToDosOnPageLoad();
+loadFolderOnPageLoad();
 setInterval(checkPastDue, 10000);
