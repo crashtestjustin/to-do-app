@@ -284,13 +284,14 @@ button.remove {
 
 .to-do-item,
 .to-do-details {
-  padding: 15px 60px;
+  padding: 15px 50px;
   margin: 15px 15px 0 15px;
 }
 
 .to-do-item {
   display: grid;
-  grid-template-columns: auto repeat(3, max-content);
+  /* grid-template-columns: auto repeat(3, max-content); */
+  grid-template-columns: min-content auto repeat(3, max-content);
   grid-column-gap: 20px;
   align-items: center;
   background-color: var(--to-do-bg);
@@ -310,6 +311,11 @@ button.remove {
 .to-do-item input[type="checkbox"] {
   width: 25px;
   height: 25px;
+}
+
+.expand-icon-main,
+.expand-icon-nav {
+  font-size: 1.1rem;
 }
 
 .overdue-to-do {
