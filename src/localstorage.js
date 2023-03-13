@@ -114,6 +114,7 @@ function createToDo(toDoObject) {
 
   const expandIcon = createDiv("expand-icon-main");
   expandIcon.textContent = "+";
+  expandIcon.dataset.item = section.dataset.item;
 
   const toDoTitle = createDiv("");
   toDoTitle.textContent = toDoObject.title;

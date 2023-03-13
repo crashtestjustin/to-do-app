@@ -129,6 +129,7 @@ export function createToDo(e) {
 
   const expandIcon = createDiv("expand-icon-main");
   expandIcon.textContent = "+";
+  expandIcon.dataset.item = section.dataset.item;
 
   const toDoTitle = createDiv("");
   toDoTitle.textContent = e.title;
@@ -342,27 +343,28 @@ export function closeModal(e) {
 export function expandSection(e) {
   const toDoItem = e.target.closest(".to-do-item");
   const collapseDesc = document.querySelectorAll(".description-wrapper");
-  const expandIcon = toDoItem.querySelector(".expand-icon-main");
   let i = toDoItem.dataset.item;
+  const expandIcons = document.querySelectorAll(".expand-icon-main");
 
   // this code required sections to be expanded and minimized manually per section
 
-  collapseDesc.forEach((desc) => {
-    const dNum = desc.getAttribute("data-item");
-    if (dNum === i) {
-      desc.style.maxHeight =
-        desc.style.maxHeight === "0px" ? `${content.scrollHeight}px` : "0";
+  for (let d = 0; d < collapseDesc.length; d++) {
+    if (collapseDesc[d].dataset.item === i) {
+      collapseDesc[d].style.maxHeight =
+        collapseDesc[d].style.maxHeight === "0px"
+          ? `${content.scrollHeight}px`
+          : "0";
     }
-    if (desc.style.maxHeight === "0px") {
+    if (collapseDesc[d].style.maxHeight === "0px") {
       toDoItem.style.borderBottomLeftRadius = "var(--standard-border-radius)";
       toDoItem.style.borderBottomRightRadius = "var(--standard-border-radius)";
-      expandIcon.textContent = "+";
+      expandIcons[d].textContent = "+";
     } else {
       toDoItem.style.removeProperty("border-bottom-left-radius");
       toDoItem.style.removeProperty("border-bottom-right-radius");
-      expandIcon.textContent = "-";
+      expandIcons[d].textContent = "-";
     }
-  });
+  }
 
   //below code makes other sections collapse when another section is expanded
 
