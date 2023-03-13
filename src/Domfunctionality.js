@@ -111,8 +111,14 @@ export function removeFolder(e) {
 //setting up to-do elements for page
 let item = 0;
 export function createToDo(e) {
+  const exisitngToDos = document.querySelectorAll(".to-do-item");
   const section = createDiv("to-do-item");
-  section.dataset.item = item;
+  if (exisitngToDos.length >= 1) {
+    const lastItem = exisitngToDos[exisitngToDos.length - 1];
+    section.dataset.item = parseInt(lastItem.dataset.item) + 1;
+  } else {
+    section.dataset.item = item;
+  }
   section.style.borderBottomLeftRadius = "var(--standard-border-radius)";
   section.style.borderBottomRightRadius = "var(--standard-border-radius)";
   item++;
@@ -120,6 +126,9 @@ export function createToDo(e) {
   section.addEventListener("click", (e) => {
     expandSection(e);
   });
+
+  const expandIcon = createDiv("expand-icon-main");
+  expandIcon.textContent = "+";
 
   const toDoTitle = createDiv("");
   toDoTitle.textContent = e.title;
@@ -143,6 +152,7 @@ export function createToDo(e) {
     removeToDo(e);
   });
 
+  section.appendChild(expandIcon);
   section.appendChild(toDoTitle);
   section.appendChild(uiDueDate);
   section.appendChild(checkbox);
@@ -154,8 +164,16 @@ export function createToDo(e) {
 //setting up expanding details section of to do
 let deets = 0;
 export function toDetails(e) {
+  const existingDescriptions = document.querySelectorAll(
+    ".description-wrapper"
+  );
   const sectionWrap = createDiv("description-wrapper collapsed-desc");
-  sectionWrap.dataset.item = deets;
+  if (existingDescriptions.length >= 1) {
+    const lastItem = existingDescriptions[existingDescriptions.length - 1];
+    sectionWrap.dataset.item = parseInt(lastItem.dataset.item) + 1;
+  } else {
+    sectionWrap.dataset.item = deets;
+  }
   sectionWrap.style.maxHeight = "0";
   deets++;
 
@@ -324,9 +342,10 @@ export function closeModal(e) {
 export function expandSection(e) {
   const toDoItem = e.target.closest(".to-do-item");
   const collapseDesc = document.querySelectorAll(".description-wrapper");
+  const expandIcon = toDoItem.querySelector(".expand-icon-main");
   let i = toDoItem.dataset.item;
 
-  // this code required sections to be expanded and minimized manually
+  // this code required sections to be expanded and minimized manually per section
 
   collapseDesc.forEach((desc) => {
     const dNum = desc.getAttribute("data-item");
@@ -337,9 +356,11 @@ export function expandSection(e) {
     if (desc.style.maxHeight === "0px") {
       toDoItem.style.borderBottomLeftRadius = "var(--standard-border-radius)";
       toDoItem.style.borderBottomRightRadius = "var(--standard-border-radius)";
+      expandIcon.textContent = "+";
     } else {
       toDoItem.style.removeProperty("border-bottom-left-radius");
       toDoItem.style.removeProperty("border-bottom-right-radius");
+      expandIcon.textContent = "-";
     }
   });
 
@@ -438,12 +459,19 @@ export function checkForToDos() {
 export function expandAll() {
   const expandButton = document.querySelector(".expand-all");
   const collapseDesc = document.querySelectorAll(".description-wrapper");
+  const expandIcons = document.querySelectorAll(".expand-icon-main");
   const toDoItem = document.querySelectorAll(".to-do-item");
   if (expandButton.textContent === "Expand All") {
     for (let i = 0; i < collapseDesc.length; i++) {
       collapseDesc[i].style.maxHeight = `${content.scrollHeight}px`;
       toDoItem[i].style.removeProperty("border-bottom-left-radius");
       toDoItem[i].style.removeProperty("border-bottom-right-radius");
+      // expandIcons.forEach((icon) => {
+      //   icon.textContent = "-";
+      // });
+      for (let j = 0; j < expandIcons.length; j++) {
+        expandIcons[j].textContent = "-";
+      }
     }
     expandButton.textContent = "Collapse All";
   } else {
@@ -453,6 +481,12 @@ export function expandAll() {
         "var(--standard-border-radius)";
       toDoItem[i].style.borderBottomRightRadius =
         "var(--standard-border-radius)";
+      // expandIcons.forEach((icon) => {
+      //   icon.textContent = "+";
+      // });
+      for (let j = 0; j < expandIcons.length; j++) {
+        expandIcons[j].textContent = "+";
+      }
     }
     expandButton.textContent = "Expand All";
   }

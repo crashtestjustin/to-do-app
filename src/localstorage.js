@@ -112,6 +112,9 @@ function createToDo(toDoObject) {
     expandSection(e);
   });
 
+  const expandIcon = createDiv("expand-icon-main");
+  expandIcon.textContent = "+";
+
   const toDoTitle = createDiv("");
   toDoTitle.textContent = toDoObject.title;
 
@@ -134,6 +137,7 @@ function createToDo(toDoObject) {
     removeToDo(e);
   });
 
+  section.appendChild(expandIcon);
   section.appendChild(toDoTitle);
   section.appendChild(uiDueDate);
   section.appendChild(checkbox);
