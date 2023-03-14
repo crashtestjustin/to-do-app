@@ -6,6 +6,7 @@
   --secondary-txt-color: #ced9bf;
   --to-do-bg: #bb513a;
   --to-do-txt-color: #fdda7d;
+  --selected-folder-color: #637682;
 }
 
 html {
@@ -82,9 +83,10 @@ button {
   color: var(--header-text-color);
 }
 
-/* button.active-folder {
-  color: var(--secondary-txt-color);
-} */
+button.all-items {
+  background-color: var(--selected-folder-color);
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
 
 button.sub-cat {
   width: 200px;
@@ -290,7 +292,6 @@ button.remove {
 
 .to-do-item {
   display: grid;
-  /* grid-template-columns: auto repeat(3, max-content); */
   grid-template-columns: min-content auto repeat(3, max-content);
   grid-column-gap: 20px;
   align-items: center;
@@ -316,6 +317,7 @@ button.remove {
 .expand-icon-main,
 .expand-icon-nav {
   font-size: 1.1rem;
+  color: var(--header-bg);
 }
 
 .overdue-to-do {
