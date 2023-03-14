@@ -3,6 +3,7 @@
 need to continue by setting up functionality for to dos:
 
 - expand/collapse capability for custom folders
+- updated folders not saving to local storage upon save
 - change folder selected button colour (default the all to be seleected colour on page load)
 - styling updates for remaining buttons and text areas and forms + expand/collapse icons on page elements
 - removed folder array item from folder object array when removed from navigation pane

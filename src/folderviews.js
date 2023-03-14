@@ -40,6 +40,7 @@ function FolderViewContent(e) {
       allToDoItems.style.maxHeight = "0";
       allToDoItems.style.visibility = "hidden";
     }
+    setSelectedStyle(selectedButton);
     return filteredDiv;
   }
 
@@ -68,6 +69,7 @@ function FolderViewContent(e) {
       allToDoItems.style.maxHeight = "0";
       allToDoItems.style.visibility = "hidden";
     }
+    setSelectedStyle(selectedButton);
     return filteredDiv;
   }
 
@@ -96,6 +98,7 @@ function FolderViewContent(e) {
       allToDoItems.style.maxHeight = "0";
       allToDoItems.style.visibility = "hidden";
     }
+    setSelectedStyle(selectedButton);
     return filteredDiv;
   }
 
@@ -106,6 +109,7 @@ function FolderViewContent(e) {
 
   //NEED TO ORDER BY DATE THEN BY DATA ITEM WHEN CREATING THE NEW FILTERED DIV
   if (selectedButton.classList.contains("new-folder")) {
+    console.log(selectedButton);
     const existingfilter = document.querySelector(".filtered-div");
     if (existingfilter) {
       reorderAndReappend();
@@ -129,7 +133,7 @@ function FolderViewContent(e) {
       allToDoItems.style.maxHeight = "0";
       allToDoItems.style.visibility = "hidden";
     }
-
+    setSelectedStyle(selectedButton);
     return filteredDiv;
   }
 
@@ -140,7 +144,7 @@ function FolderViewContent(e) {
     allToDoItems.style.removeProperty("visibility");
 
     removeFilter();
-
+    setSelectedStyle(selectedButton);
     return allToDoItems;
   }
 }
@@ -174,6 +178,18 @@ function removeFilter() {
   } else {
     return;
   }
+}
+
+function setSelectedStyle(selectedButton) {
+  const allNavButtons = document.querySelectorAll(".to-do-buttons button");
+  allNavButtons.forEach((navButton) => {
+    if (navButton !== selectedButton) {
+      navButton.style.backgroundColor = "var(--secondary-bg-color)";
+      navButton.style.boxShadow = "none";
+    }
+  });
+  selectedButton.style.backgroundColor = "var(--selected-folder-color)";
+  selectedButton.style.boxShadow = "rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset";
 }
 
 export function renderFolderView(e) {
