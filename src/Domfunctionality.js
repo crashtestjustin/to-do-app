@@ -423,6 +423,9 @@ export function toggleEditing(e) {
         toDoObjects[i].folders.push(multiOptions[j].value);
       }
     }
+    //save to locat storage
+    const updatedToDoList = JSON.stringify(toDoObjects);
+    saveToLocalStorage(updatedToDoList);
     multiSelect.disabled = true;
     e.target.textContent = "EDIT";
     checkPastDue();
