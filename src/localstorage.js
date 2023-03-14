@@ -82,8 +82,6 @@ export function loadToDosOnPageLoad() {
     toDoObjects.length = 0;
     for (let i = 0; i < parsedToDoList.length; i++) {
       toDoObjects.push(parsedToDoList[i]);
-      //   createToDo(parsedToDoList[i]);
-      //   toDetails(parsedToDoList[i]);
       appendToDo(parsedToDoList[i]);
     }
   }
@@ -136,7 +134,6 @@ function createToDo(toDoObject) {
   const deleteButton = new Image();
   deleteButton.src = removeIcon;
   deleteButton.classList = "delete";
-  // const deleteButton = createButton("delete", "🗑️");
   deleteButton.addEventListener("click", (e) => {
     removeToDo(e);
   });
