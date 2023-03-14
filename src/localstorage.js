@@ -18,6 +18,7 @@ import { toDoObjects } from "./createtodo";
 import { reformatDate } from "./createtodo";
 import { descriptionOptions } from "./multiselect";
 import { checkPastDue } from "./datecompare";
+import removeIcon from "./error.png";
 
 //remove item from local storage
 export function removeLocalStorageKey(key) {
@@ -132,8 +133,10 @@ function createToDo(toDoObject) {
   checkbox.addEventListener("click", (e) => {
     markComplete(e);
   });
-
-  const deleteButton = createButton("delete", "🗑️");
+  const deleteButton = new Image();
+  deleteButton.src = removeIcon;
+  deleteButton.classList = "delete";
+  // const deleteButton = createButton("delete", "🗑️");
   deleteButton.addEventListener("click", (e) => {
     removeToDo(e);
   });

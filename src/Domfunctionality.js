@@ -13,6 +13,7 @@ import {
   saveToLocalStorage,
   removeLocalStorageKey,
 } from "./localstorage";
+import removeIcon from "./error.png";
 
 export function createDiv(divClass) {
   const div = document.createElement("div");
@@ -147,8 +148,10 @@ export function createToDo(e) {
   checkbox.addEventListener("click", (e) => {
     markComplete(e);
   });
-
-  const deleteButton = createButton("delete", "🗑️");
+  const deleteButton = new Image();
+  deleteButton.src = removeIcon;
+  deleteButton.classList = "delete";
+  // const deleteButton = createButton("delete", "🗑️");
   deleteButton.addEventListener("click", (e) => {
     removeToDo(e);
   });
