@@ -175,15 +175,17 @@ function removeFilter() {
 }
 
 function setSelectedStyle(selectedButton) {
-  const allNavButtons = document.querySelectorAll(".to-do-buttons button");
+  const allNavButtons = document.querySelectorAll(".navigation button");
   allNavButtons.forEach((navButton) => {
     if (navButton !== selectedButton) {
       navButton.style.backgroundColor = "var(--secondary-bg-color)";
       navButton.style.boxShadow = "none";
+    } else {
+      selectedButton.style.backgroundColor = "var(--selected-folder-color)";
+      selectedButton.style.boxShadow =
+        "rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset";
     }
   });
-  selectedButton.style.backgroundColor = "var(--selected-folder-color)";
-  selectedButton.style.boxShadow = "rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset";
 }
 
 export function renderFolderView(e) {

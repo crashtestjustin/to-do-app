@@ -42,6 +42,7 @@ function toDoButtons() {
   section.appendChild(thisWeek);
   section.appendChild(nextWeek);
   section.appendChild(folders);
+
   return section;
 }
 
@@ -102,3 +103,18 @@ export function folderForm() {
   formParent.appendChild(folderSubmit);
   return formParent;
 }
+
+// export function buttonHover() {
+//   console.log("test");
+
+//   const navButtons = document.querySelectorAll(".navigation button");
+//   navButtons.forEach((button) => {
+//     button.addEventListener("mouseover", (e) => {
+//       if (button.classList.contains("folders")) {
+//         button.style.backgroundColor = "var(--secondary-bg-color)";
+//       } else {
+//         button.style.backgroundColor = "var(--selected-folder-color)";
+//       }
+//     });
+//   });
+// }

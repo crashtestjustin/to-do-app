@@ -6,7 +6,7 @@
   --secondary-txt-color: #ced9bf;
   --to-do-bg: #bb513a;
   --to-do-txt-color: #fdda7d;
-  --selected-folder-color: #637682;
+  --selected-folder-color: #53636d47;
 }
 
 html {
@@ -81,6 +81,10 @@ button {
   border-radius: 0;
   font-weight: 700;
   color: var(--header-text-color);
+}
+
+.navigation button:hover {
+  background-color: var(--selected-folder-color);
 }
 
 button.all-items {
