@@ -102,14 +102,8 @@ function FolderViewContent(e) {
     return filteredDiv;
   }
 
-  //   if (selectedButton.textContent === "FOLDERS") {
-  //     console.log("do nothing");
-  //     return;
-  //   }
-
   //NEED TO ORDER BY DATE THEN BY DATA ITEM WHEN CREATING THE NEW FILTERED DIV
   if (selectedButton.classList.contains("new-folder")) {
-    console.log(selectedButton);
     const existingfilter = document.querySelector(".filtered-div");
     if (existingfilter) {
       reorderAndReappend();
