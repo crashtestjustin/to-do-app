@@ -368,7 +368,7 @@ export function expandSection(e) {
       expandIcons[d].textContent = "-";
     }
   }
-
+  checkForExpanded();
   //below code makes other sections collapse when another section is expanded
 
   // collapseDesc.forEach((desc) => {
@@ -474,9 +474,6 @@ export function expandAll() {
       collapseDesc[i].style.maxHeight = `${content.scrollHeight}px`;
       toDoItem[i].style.removeProperty("border-bottom-left-radius");
       toDoItem[i].style.removeProperty("border-bottom-right-radius");
-      // expandIcons.forEach((icon) => {
-      //   icon.textContent = "-";
-      // });
       for (let j = 0; j < expandIcons.length; j++) {
         expandIcons[j].textContent = "-";
       }
@@ -497,5 +494,24 @@ export function expandAll() {
       }
     }
     expandButton.textContent = "Expand All";
+  }
+}
+
+function checkForExpanded() {
+  const toDoDescriptions = document.querySelectorAll(".description-wrapper");
+  const expandAllBtn = document.querySelector(".expand-all");
+  let passTestArray = [];
+
+  for (let i = 0; i < toDoDescriptions.length; i++) {
+    if (toDoDescriptions[i].style.maxHeight !== "0px") {
+      passTestArray.push("expanded");
+    } else {
+      passTestArray.push("collapsed");
+    }
+  }
+  if (!passTestArray.includes("collapsed")) {
+    expandAllBtn.textContent = "Collapse All";
+  } else {
+    expandAllBtn.textContent = "Expand All";
   }
 }
