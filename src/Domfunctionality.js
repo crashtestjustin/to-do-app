@@ -1,4 +1,8 @@
-import { toDoObjects, reformatDate } from "./createtodo";
+import {
+  toDoObjects,
+  reformatDate,
+  removeCustomFolderLink,
+} from "./createtodo";
 import {
   createMultiSelect,
   removeMultiselectOption,
@@ -94,6 +98,8 @@ export function removeFolder(e) {
   removeButtons.forEach((button) => {
     const xNum = button.getAttribute("data-index");
     if (xNum === i) {
+      const buttonText = button.querySelector(".new-folder");
+      removeCustomFolderLink(buttonText.textContent);
       button.remove();
       theFolderList.splice(i, 1);
       if (theFolderList.length === 0) {

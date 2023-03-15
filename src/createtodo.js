@@ -1,4 +1,5 @@
 import { format, parse } from "date-fns";
+import { saveToLocalStorage } from "./localstorage";
 
 var toDoList = [];
 //exporting the toDoList string to use in multiselect functions for toDo descriptions and saving
@@ -21,6 +22,20 @@ export const toDo = (title, dueDate, dueTime, description, folders) => {
 //adding object to array
 function pushToDoList(title, dueDate, dueTime, description, folders) {
   toDoList.push({ title, dueDate, dueTime, description, folders });
+}
+
+//remove folder from to do objects
+export function removeCustomFolderLink(folderName) {
+  console.log(toDoObjects);
+  toDoObjects.forEach((object) => {
+    for (let i = 0; i < object.folders.length; i++) {
+      if (object.folders[i] === folderName) {
+        object.folders.splice(i, 1);
+      }
+    }
+  });
+  const updatedToDoList = JSON.stringify(toDoObjects);
+  saveToLocalStorage(updatedToDoList);
 }
 
 //reformatting default date format into mm/dd/yyyy string

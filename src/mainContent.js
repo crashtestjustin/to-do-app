@@ -125,7 +125,7 @@ export function toDoForm() {
         values
       );
       submitToDoModal(toDoOne);
-
+      console.log(toDoObjects);
       const stringifiedObjects = JSON.stringify(toDoObjects);
       saveToLocalStorage(stringifiedObjects);
 
