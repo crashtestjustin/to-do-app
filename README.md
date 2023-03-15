@@ -2,14 +2,11 @@
 
 need to continue by setting up functionality for to dos:
 
-- expand/collapse capability for custom folders
 - mobile compatability
-- styling updates for remaining buttons and text areas and forms + expand/collapse icons on page elements
+- pomodoro timer
 
 Future Add ons
 
-- pomodoro timer
-
-- create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM???
-- maybe moving toDos marked complete to the bottom of the list????
-- would be great to be able to reorder custom folders
+- create folder views - ORDER THE FILTERS BY DATE THEN BY DATA ITEM?
+- maybe moving toDos marked complete to the bottom of the list
+- reorder custom folders via drag and drop
