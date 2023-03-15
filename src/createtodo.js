@@ -24,7 +24,7 @@ function pushToDoList(title, dueDate, dueTime, description, folders) {
   toDoList.push({ title, dueDate, dueTime, description, folders });
 }
 
-//remove folder from to do objects
+//remove folder from to do objects folder array if present
 export function removeCustomFolderLink(folderName) {
   console.log(toDoObjects);
   toDoObjects.forEach((object) => {
