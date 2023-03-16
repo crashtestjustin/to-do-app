@@ -3,7 +3,6 @@
 need to continue by setting up functionality for to dos:
 
 - mobile compatability
-- pomodoro timer
 
 Future Add ons
 
