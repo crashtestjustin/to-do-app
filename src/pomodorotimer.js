@@ -12,9 +12,12 @@ export function interpretTimerClick(e) {
   }
   if (clickedBtn.classList.contains("end-pomodoro")) {
     console.log("END");
+    pomodoroTimer("END");
   }
 }
 
+let interval = null;
+let timerAlert = null;
 function pomodoroTimer(inputParam) {
   const timer = document.querySelector(".pomodoro-timer");
 
@@ -23,7 +26,11 @@ function pomodoroTimer(inputParam) {
     let minutes = 25;
     let hours = 0;
 
-    const interval = setInterval(() => {
+    if (interval !== null) {
+      clearInterval(interval);
+    }
+
+    interval = setInterval(() => {
       seconds--;
 
       if (seconds === -1) {
@@ -37,7 +44,19 @@ function pomodoroTimer(inputParam) {
       }
 
       if (hours === 0 && minutes === 0 && seconds === 0) {
+        let blinkMode = "light";
         clearInterval(interval);
+        timerAlert = setInterval(() => {
+          if (blinkMode === "light") {
+            timer.style.color = "var(--secondary-bg-color)";
+            timer.style.backgroundColor = "var(--header-bg)";
+            blinkMode = "dark";
+          } else {
+            timer.style.color = "var(--header-bg)";
+            timer.style.backgroundColor = "var(--secondary-bg-color)";
+            blinkMode = "light";
+          }
+        }, 250);
       }
 
       const time = `${hours.toString().padStart(2, "0")}:${minutes
@@ -45,9 +64,14 @@ function pomodoroTimer(inputParam) {
         .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
       timer.textContent = time;
-      console.log(timer);
     }, 1000);
-  } else {
+  }
+  if (inputParam === "END") {
+    clearInterval(interval);
+    interval = null;
+    clearInterval(timerAlert);
+    timer.style.color = "var(--header-bg)";
+    timer.style.backgroundColor = "var(--secondary-bg-color)";
     timer.textContent = "00:25:00";
   }
 }
