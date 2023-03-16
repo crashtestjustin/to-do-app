@@ -1,7 +1,14 @@
 export function expandPomodoroTimer(e) {
   const timerDiv = document.querySelector(".timer-div");
+  const expandArrow = document.querySelector(".expand-arrow");
   timerDiv.style.maxHeight =
     timerDiv.style.maxHeight === "0px" ? `${content.scrollHeight}px` : "0";
+
+  if (timerDiv.style.maxHeight !== "0px") {
+    expandArrow.style.transform = "rotate(90deg)";
+  } else {
+    expandArrow.style.removeProperty("transform");
+  }
 }
 
 export function interpretTimerClick(e) {

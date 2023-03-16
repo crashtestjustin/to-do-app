@@ -50,8 +50,18 @@ function toDoButtons() {
 function pomodoroTimerBtn() {
   const section = createDiv("pomodoro");
 
+  const pomodoroDiv = createDiv("pomodoro-div");
+  section.appendChild(pomodoroDiv);
+
+  const expandArrow = createDiv("expand-arrow");
+  expandArrow.textContent = ">";
+  pomodoroDiv.appendChild(expandArrow);
+  expandArrow.addEventListener("click", (e) => {
+    expandPomodoroTimer(e);
+  });
+
   const btn = createButton("pomodoro-btn", "POMODORO TIMER");
-  section.appendChild(btn);
+  pomodoroDiv.appendChild(btn);
 
   btn.addEventListener("click", (e) => {
     expandPomodoroTimer(e);
