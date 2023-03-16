@@ -178,8 +178,16 @@ function setSelectedStyle(selectedButton) {
   const allNavButtons = document.querySelectorAll(".navigation button");
   allNavButtons.forEach((navButton) => {
     if (navButton !== selectedButton) {
-      navButton.style.backgroundColor = "var(--secondary-bg-color)";
-      navButton.style.boxShadow = "none";
+      if (
+        navButton.classList.contains("timer-div") ||
+        navButton.classList.contains("start-pomodoro") ||
+        navButton.classList.contains("end-pomodoro")
+      ) {
+        return;
+      } else {
+        navButton.style.backgroundColor = "var(--secondary-bg-color)";
+        navButton.style.boxShadow = "none";
+      }
     } else {
       selectedButton.style.backgroundColor = "var(--selected-folder-color)";
       selectedButton.style.boxShadow =
@@ -194,7 +202,8 @@ export function renderFolderView(e) {
   if (
     (selectedButton.textContent === "FOLDERS" &&
       selectedButton.classList.contains("main-cat")) ||
-    selectedButton.textContent === "x"
+    selectedButton.textContent === "x" ||
+    selectedButton.classList.contains("pomodoro")
   ) {
     return;
   } else {

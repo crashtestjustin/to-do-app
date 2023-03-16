@@ -4,6 +4,7 @@ import { submitFolderModal } from "./Domfunctionality.js";
 import { closeModal } from "./Domfunctionality.js";
 import { displayModal } from "./Domfunctionality.js";
 import { renderFolderView } from "./folderviews.js";
+import { expandPomodoroTimer } from "./pomodorotimer.js";
 
 export function createNav() {
   const nav = createDiv("navigation");
@@ -51,6 +52,23 @@ function pomodoroTimerBtn() {
 
   const btn = createButton("pomodoro-btn", "POMODORO TIMER");
   section.appendChild(btn);
+
+  btn.addEventListener("click", (e) => {
+    expandPomodoroTimer(e);
+  });
+
+  const timerDiv = createDiv("timer-div");
+  timerDiv.style.maxHeight = "0";
+  section.appendChild(timerDiv);
+
+  const timerText = createDiv("pomodoro-timer");
+  timerText.textContent = "00:25:00";
+  const startBtn = createButton("start-pomodoro pomodoro-run-btn", "START");
+  const endBtn = createButton("end-pomodoro pomodoro-run-btn", "END");
+
+  timerDiv.appendChild(timerText);
+  timerDiv.appendChild(startBtn);
+  timerDiv.appendChild(endBtn);
 
   return section;
 }
