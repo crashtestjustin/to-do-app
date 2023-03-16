@@ -157,7 +157,6 @@ export function createToDo(e) {
   const deleteButton = new Image();
   deleteButton.src = removeIcon;
   deleteButton.classList = "delete";
-  // const deleteButton = createButton("delete", "🗑️");
   deleteButton.addEventListener("click", (e) => {
     removeToDo(e);
   });
@@ -492,9 +491,6 @@ export function expandAll() {
         "var(--standard-border-radius)";
       toDoItem[i].style.borderBottomRightRadius =
         "var(--standard-border-radius)";
-      // expandIcons.forEach((icon) => {
-      //   icon.textContent = "+";
-      // });
       for (let j = 0; j < expandIcons.length; j++) {
         expandIcons[j].textContent = "+";
       }
