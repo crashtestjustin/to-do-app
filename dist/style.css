@@ -493,3 +493,126 @@ button.start-pomodoro:active,
 button.end-pomodoro:active {
   transform: scale(0.97);
 }
+
+@media only screen and (min-width: 500px) and (max-width: 950px) {
+  .application-body {
+    /* min-height: 100vh; */
+    display: grid;
+    grid-template: 100px 1fr / minmax(200px, 200px) 3fr;
+    position: relative;
+  }
+
+  .navigation button {
+    width: 165px;
+    font-size: 0.8rem;
+  }
+
+  button.sub-cat,
+  .custom-div {
+    width: 135px;
+  }
+
+  button.remove {
+    width: 20px;
+  }
+
+  .pomodoro-div {
+    width: 174px;
+    column-gap: 0;
+    /* display: flex; */
+  }
+
+  .expand-arrow {
+    font-size: 0.8rem;
+  }
+
+  .pomodoro-timer {
+    width: 170px;
+    height: 34px;
+  }
+
+  button.pomodoro-run-btn {
+    width: 80px;
+    height: 30px;
+  }
+
+  .to-do-item {
+    font-size: 1.2rem;
+  }
+
+  .expand-icon-main,
+  .expand-icon-nav {
+    font-size: 0.9rem;
+  }
+
+  .to-do-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+
+  .delete {
+    width: 20px;
+  }
+
+  .to-do-details {
+    grid-template: repeat(2, 1fr) minmax(min-content, 80px) / repeat(2, 1fr);
+  }
+
+  .edit-button {
+    width: 40px;
+    height: 40px;
+    font-size: 0.8rem;
+  }
+
+  .add-to-do-btn {
+    width: 75px;
+    height: 75px;
+  }
+
+  .close-modal {
+    font-size: 1.5rem;
+  }
+
+  .new-folder-modal,
+  .new-todo-modal {
+    font-size: 1.2rem;
+    width: 400px;
+    height: 175px;
+  }
+
+  .new-todo-modal {
+    height: auto;
+  }
+
+  .new-todo-modal div {
+    font-size: 0.9rem;
+  }
+
+  .new-folder-button {
+    font-size: 0.9rem;
+  }
+
+  .new-submit-button {
+    font-size: 0.9rem;
+  }
+
+  .name-div,
+  .time-div,
+  .date-div {
+    align-items: center;
+  }
+
+  .new-todo-modal textarea {
+    height: 50px;
+  }
+
+  #folder-select {
+    height: 60px;
+  }
+
+  .expand-all {
+    width: 80px;
+    height: 35px;
+    font-size: 0.8rem;
+  }
+}
