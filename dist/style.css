@@ -528,7 +528,8 @@ button.end-pomodoro:active {
 
   .pomodoro-timer {
     width: 170px;
-    height: 34px;
+    height: 30px;
+    padding-top: 3px;
   }
 
   button.pomodoro-run-btn {
@@ -614,5 +615,120 @@ button.end-pomodoro:active {
     width: 80px;
     height: 35px;
     font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 499px) {
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: -webkit-fill-available;
+  }
+
+  .content {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  .application-body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template: 80px 1fr 1fr / 1fr;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .navigation {
+    grid-column: 1 / 4;
+  }
+
+  .modal-bg {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: #00000043;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+
+  .new-folder-modal,
+  .new-todo-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: auto;
+    /* grid-template-rows: min-content; */
+    /* padding: 10px 10px 20px 10px; */
+    /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1); */
+    font-size: 0.8rem;
+    /* font-weight: 600; */
+    /* border-radius: 4px; */
+  }
+
+  .new-todo-modal div {
+    font-size: 0.8rem;
+  }
+
+  .close-modal {
+    font-size: 1rem;
+  }
+
+  .display-warning::after {
+    font-size: 0.9rem;
+  }
+
+  .new-folder-modal input[type="text"] {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+
+  .new-folder-modal button {
+    font-size: 0.9rem;
+  }
+
+  .name-div,
+  .time-div,
+  .date-div {
+    align-items: center;
+  }
+
+  .add-to-do-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .to-do-item {
+    grid-column-gap: 10px;
+    font-size: 1.2rem;
+  }
+
+  .to-do-item,
+  .to-do-details {
+    padding: 15px 25px;
+  }
+
+  .due-date-display {
+    font-size: 1rem;
+  }
+
+  .to-do-item input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+  }
+
+  .delete {
+    /* width: 20px; */
+    padding: 5px 0;
   }
 }
