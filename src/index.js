@@ -6,6 +6,7 @@ import { folderForm, buttonHover } from "./navigation.js";
 import { toDoForm } from "./mainContent.js";
 import { checkPastDue } from "./datecompare.js";
 import { loadFolderOnPageLoad, loadToDosOnPageLoad } from "./localstorage.js";
+import "./style.css";
 
 const main = document.getElementById("content");
 
